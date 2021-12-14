@@ -23,7 +23,7 @@
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="stylesheet" href="/css/style.css?v=5">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -74,6 +74,26 @@
             </div>
         </div>
     </div>
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-dialog-centered">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title">Rom Details</h4>
+		  </div>
+		  <div class="modal-body" id="modalBody">
+			<button type="button" class="btn btn-primary" onclick="CheckRomStatus(this)">Check Rom Status</button>
+			<br />
+			<button type="button" class="btn btn-primary" onclick="GetRomFileList(this)">Download Rom</button>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
 	<div class="floatingthingy">
 	</div>
 	<img class="telegram" alt="Support" title="Support" onclick="window.open('https://t.me/firmfinder')" src="img/telegram.png"/>
