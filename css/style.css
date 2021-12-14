@@ -12,6 +12,16 @@ body {
     overflow: auto;
 }
 
+.modal-body
+{
+	text-align: center;
+}
+
+.modal-body > button
+{
+	margin-bottom: 10px;
+}
+
 .inputStyle {
     margin-right: 10px !important;
     margin-bottom: 10px !important;
@@ -165,6 +175,7 @@ table tbody {
 	padding: 5px 10px;
 	border-radius: 5px;
 	font-family: ComicSans;
+	z-index: 1060;
 }
 
 .Notification.success
