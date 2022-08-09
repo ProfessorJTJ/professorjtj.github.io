@@ -150,12 +150,29 @@
 	<span id="notificationSpan"></span>
 	<script type="text/javascript">
 		atOptions = {
-			'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
-			'format' : 'iframe',
-			'height' : 60,
-			'width' : 468,
-			'params' : {}
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
 		};
+		setInterval(function() {
+			atOptions = {
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+			};
+			
+			let targetDOM = document.querySelector(".bottomad");
+			targetDOM.innerHTML = "";
+			
+			let newScript = document.createElement("script");
+			newScript.type = "text/javascript";
+			newScript.src = "//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js";
+			targetDOM.appendChild(newScript);
+		}, 30000);
 	</script>
 	<div class="bottomad">
 		<script type="text/javascript" src="//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js">
