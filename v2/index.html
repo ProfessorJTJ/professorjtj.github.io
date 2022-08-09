@@ -148,7 +148,7 @@
 		<div class="spinner-grow spinner-grow-sm text-danger"></div> Normal Archive
 	</div>
 	<span id="notificationSpan"></span>
-	<script type="text/javascript">
+	<script>
 		atOptions = {
 				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
 				'format' : 'iframe',
@@ -156,6 +156,21 @@
 				'width' : 468,
 				'params' : {}
 		};
+	</script>
+	<div class="bottomad">
+		<script type="text/javascript" src="//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js">
+		</script>
+	</div>
+	<script type="text/javascript">
+		var targetDOM = document.querySelector(".bottomad");
+		let realAppend = targetDOM.insertBefore;
+		targetDOM.insertBefore = function()
+		{
+			if (arguments[0].tagName == "IFRAME")
+				arguments[0].sandbox = "allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation-by-user-activation";
+			realAppend.apply(this, arguments);
+		};
+		
 		setInterval(function() {
 			atOptions = {
 				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
@@ -165,18 +180,13 @@
 				'params' : {}
 			};
 			
-			let targetDOM = document.querySelector(".bottomad");
 			targetDOM.innerHTML = "";
 			
 			let newScript = document.createElement("script");
 			newScript.type = "text/javascript";
 			newScript.src = "//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js";
 			targetDOM.appendChild(newScript);
-		}, 30000);
+		}, 5000);
 	</script>
-	<div class="bottomad">
-		<script type="text/javascript" src="//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js">
-		</script>
-	</div>
 </body>
 </html>
