@@ -12,9 +12,7 @@
 		max-height: 60px;
 	}
 </style>
-
-<div>
-<script adscript>
+<script>
 	atOptions = {
 		'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
 		'format' : 'iframe',
@@ -22,22 +20,7 @@
 		'width' : 468,
 		'params' : {}
 	};
-
-	parentNodeExecute = (parameters) =>
-	{
-		let newScript = document.createElement("script");
-		newScript.innerText = parameters;
-		eval(parameters);
-	};
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			parentNodeExecute(this.responseText);
-		}
-	};
-	xhttp.open("GET", "script.txt", true);
-	xhttp.send();
 </script>
-</div>
+<script src="//www.effectivecreativeformats.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js"></script>
 </body>
 </html>
