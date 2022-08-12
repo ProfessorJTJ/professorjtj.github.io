@@ -124,19 +124,44 @@
 		<div class="spinner-grow spinner-grow-sm text-danger"></div> Downgrade Archive
 	</div>
 	<span id="notificationSpan"></span>
+	<script>
+		atOptions = {
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+		};
+	</script>
 	<div class="bottomad">
-		<iframe class="adframe" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation-by-user-activation" src="/ad/index.html">
-		</iframe>
+		<script type="text/javascript" async src="//kalganautographeater.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js">
+		</script>
 	</div>
 	<script type="text/javascript">
 		var targetDOM = document.querySelector(".bottomad");
+		let realAppend = targetDOM.insertBefore;
+		targetDOM.insertBefore = function()
+		{
+			if (arguments[0].tagName == "IFRAME")
+				arguments[0].sandbox = "allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation-by-user-activation";
+			realAppend.apply(this, arguments);
+		};
+		
 		setInterval(function() {
+			atOptions = {
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+			};
+			
 			targetDOM.innerHTML = "";
 			
-			let newScript = document.createElement("iframe");
-			newScript.className = "adframe";
-			newScript.sandbox = "allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation-by-user-activation";
-			newScript.src = "/ad/index.html";
+			let newScript = document.createElement("script");
+			newScript.type = "text/javascript";
+			newScript.async = true;
+			newScript.src = "//kalganautographeater.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js";
 			targetDOM.appendChild(newScript);
 		}, 30000);
 	</script>
