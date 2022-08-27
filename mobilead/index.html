@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Huawei Firm Finder</title>
+<meta name="description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder."/>
+	<meta name="keywords" content="Huawei Phones' Firm, Firmware, Firmware Finder, Huawei Firmware Finder, FirmFinder, Huawei Phone Android, Huawei Phone Firm, Huawei Firmware, Huawei Mate, Huawei P, Huawei Nova, Honor Firm, Honor FirmFinder, Honor Phone Firmware, Honor Firmware Finder, LGRP-OVS, EMUI 9, EMUI 8, EMUI 10, EMUI 11, EMUI 7">
+    <meta charset="utf-8">
+    <meta name="twitter:card" content="summary" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	<link rel="canonical" href="/" />
+	<meta property="og:locale" content="en_gb" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Huawei Firm Finder" />
+	<meta property="og:description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder." />
+	<meta property="og:url" content="/" />
+	<meta property="og:site_name" content="Huawei Firm Finder" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<style>
+body
+{
+	margin: 0px;
+	padding: 0px;
+	background: transparent;
+}
+
+div#adplace
+{
+	border-radius: 4px;
+	width: 320px;
+	overflow: hidden;
+}
+</style>
+
+<div id="adplace">
+</div>
+</body>
+
+</html>
+
+<script>
+let adPlace = document.querySelector("#adplace");
+var insertHook = adPlace.insertBefore;
+adPlace.insertBefore = function(argument)
+{
+	if (typeof(Java) != "undefined") {
+		ADJava.ValidAdIsAdded();
+	}
+	var ret = insertHook.apply(this, arguments);
+	return ret;
+};
+
+const newAddFunction = function() {
+	atOptions = {
+		'key' : '7ebf9f96ec750f55b2d131bd169f9c28',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+	let newAd = document.createElement("script");
+	newAd.type = "text/javascript";
+	newAd.src = location.protocol + "//kalganautographeater.com/7ebf9f96ec750f55b2d131bd169f9c28/invoke.js";
+	
+	adPlace.innerHTML = "";
+	adPlace.append(newAd);
+};
+
+setInterval(newAddFunction, 45 * 1000);
+
+newAddFunction();
+</script>
