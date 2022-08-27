@@ -45,7 +45,7 @@ let adPlace = document.querySelector("#adplace");
 var insertHook = adPlace.insertBefore;
 adPlace.insertBefore = function(argument)
 {
-	if (typeof(Java) != "undefined") {
+	if (typeof(ADJava) != "undefined") {
 		ADJava.ValidAdIsAdded();
 	}
 	var ret = insertHook.apply(this, arguments);
