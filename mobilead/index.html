@@ -1,20 +1,6 @@
 <html>
 <head>
-<title>Huawei Firm Finder</title>
-<meta name="description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder."/>
-	<meta name="keywords" content="Huawei Phones' Firm, Firmware, Firmware Finder, Huawei Firmware Finder, FirmFinder, Huawei Phone Android, Huawei Phone Firm, Huawei Firmware, Huawei Mate, Huawei P, Huawei Nova, Honor Firm, Honor FirmFinder, Honor Phone Firmware, Honor Firmware Finder, LGRP-OVS, EMUI 9, EMUI 8, EMUI 10, EMUI 11, EMUI 7">
-    <meta charset="utf-8">
-    <meta name="twitter:card" content="summary" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-	<link rel="canonical" href="/" />
-	<meta property="og:locale" content="en_gb" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Huawei Firm Finder" />
-	<meta property="og:description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder." />
-	<meta property="og:url" content="/" />
-	<meta property="og:site_name" content="Huawei Firm Finder" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -43,11 +29,13 @@ div#adplace
 <script>
 let adPlace = document.querySelector("#adplace");
 var insertHook = adPlace.insertBefore;
+let lastSuccessfulad = 0;
 adPlace.insertBefore = function(argument)
 {
 	if (typeof(ADJava) != "undefined") {
 		ADJava.ValidAdIsAdded();
 	}
+	lastSuccessfulad = new Date().getTime();
 	var ret = insertHook.apply(this, arguments);
 	return ret;
 };
@@ -66,6 +54,14 @@ const newAddFunction = function() {
 	
 	adPlace.innerHTML = "";
 	adPlace.append(newAd);
+	
+	setTimeout(function() {
+		if (lastSuccessfulad == 0 || (new Date().getTime() - lastSuccessfulad) > 20000) {
+			if (typeof(ADJava) != "undefined") {
+				ADJava.AdsFailing();
+			}
+		}
+	}, 10000);
 };
 
 setInterval(newAddFunction, 45 * 1000);
