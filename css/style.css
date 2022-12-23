@@ -316,3 +316,41 @@ iframe
 	}
 }
 
+.databasesBox {
+	position: fixed;
+	top: 10px;
+	right: 20px;
+	height: 30px;
+	background-color: rgba(0, 0, 0, 0.3);
+	transition: height 0.2s ease;
+	overflow: hidden;
+	font-family: ComicSans;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 4px;
+	text-align: center;
+	user-select: none;
+}
+.databasesBox:hover {
+	height: 155px;
+}
+
+.databasesBox hr {
+	background-color: white;
+	border-top: 2px solid rgba(0, 0, 0, 0.1);
+	margin-top: 0;
+	margin-bottom: 0px;
+}
+.databasesText {
+	margin-top: 4px;
+	height: 115px;
+	overflow: auto;
+	font-size: 0.85rem;
+}
+.databasesText a {
+	color: #e4ebe9;
+	display: block;
+	font-family: ComicSans;
+	margin-bottom: 2px;
+	font-weight: bold;
+}
