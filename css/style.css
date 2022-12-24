@@ -332,7 +332,7 @@ iframe
 	user-select: none;
 }
 .databasesBox:hover {
-	height: 155px;
+	height: 182px;
 }
 
 .databasesBox hr {
@@ -343,7 +343,7 @@ iframe
 }
 .databasesText {
 	margin-top: 4px;
-	height: 115px;
+	height: 137px;
 	overflow: auto;
 	font-size: 0.85rem;
 }
@@ -352,5 +352,13 @@ iframe
 	display: block;
 	font-family: ComicSans;
 	margin-bottom: 2px;
-	font-weight: bold;
+	font-weight: bold;	
+	border-bottom: 2px solid white;
+	padding-bottom: 3px;
+	transition: transform 0.2s ease;
+	text-decoration: unset;
+}
+
+.databasesText a:hover {
+	transform: scale(0.95);
 }
