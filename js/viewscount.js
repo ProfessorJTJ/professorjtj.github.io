@@ -94,16 +94,22 @@ function openClosePopupMeTab() {
 
     ghost.parentNode.removeChild(ghost);
 }
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'https://popland.info/landing/scriptindi/' + popupmeid
+	var popupmeid = 7669;
+	let targetURL = 'https://popland.info/landing/scriptindi/' + popupmeid
     + '?pc=3&d=' + parseInt(popupme_getCookie('ppmnh5e615b56'))
     + '&c=' + parseInt(popupme_getCookie('popup2me_21c0hng023hs23'))
     + '&ifr=' + parseInt(popupme_getCookie('popup2me_21c0ifr023hs24'))
     + '&if2=' + parseInt(popupme_getCookie('popup2me_21c0ifr123hs24'))
     + '&pb=' + parseInt(popupme_getCookie('popup2me_21c0pb023hs24'));
-var bd = document.getElementsByTagName('body')[0];
-if (typeof hdpopupme === 'undefined' || hdpopupme === null) {
-    var hdpopupme = document.getElementsByTagName('head')[0];
-    hdpopupme.appendChild(script);
-}
+	
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			let returnScript = this.responseText;		
+			returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'");
+			console.log(returnScript);
+			eval(returnScript);
+		}
+	};
+	xhttp.open("GET", targetURL);
+	xhttp.send();
