@@ -106,8 +106,8 @@ function openClosePopupMeTab() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			let returnScript = this.responseText;		
-			returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'");
-			console.log(returnScript);
+			returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("document.popupme_popup || ", "");
+			//console.log(returnScript);
 			eval(returnScript);
 		}
 	};
