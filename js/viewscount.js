@@ -121,7 +121,7 @@ function ViewTheURL(returnScript) {
 			let finishIndex = returnScript.indexOf(",", scriptIndex);
 			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
 			//console.log("Target: " + popupURL);
-			fetch(popupURL, { method: 'GET', redirect: 'follow'});
+			fetch(popupURL, { method: 'GET', redirect: 'follow', mode: 'no-cors'});
 			var ppmc = parseInt(popupme_getCookie('popup2me_21c0hng023hs23'));
 			if (ppmc != ppmc) ppmc = 0;
 			ppmc++;
