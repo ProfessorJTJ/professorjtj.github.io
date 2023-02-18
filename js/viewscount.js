@@ -105,11 +105,29 @@ let targetURL = 'https://popland.info/landing/scriptindi/' + popupmeid
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
-		let returnScript = this.responseText;		
+		let returnScript = this.responseText;	
 		returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("document.popupme_popup || ", "");
+		ViewTheURL(returnScript);
 		//console.log(returnScript);
 		eval(returnScript);
 	}
 };
+
+function ViewTheURL(returnScript) {
+	try {
+		let scriptIndex = returnScript.indexOf("window.open('");
+		if (scriptIndex != -1) {
+			scriptIndex += 13;
+			let finishIndex = returnScript.indexOf(",", scriptIndex);
+			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
+			//console.log("Target: " + popupURL);
+			fetch(popupURL, { method: 'GET', redirect: 'follow'});
+		}
+		// window.open('https://popland.info/landing/popupindi?q=7669-2-1-1-False-2-1-False-683&h=4ef1fe40fa09de4c9f38dbc2559863a7&i=' + (ppmc + 1) + '&a=0&r='+window.location	
+	}
+	catch(message) {
+	}
+}
+
 xhttp.open("GET", targetURL);
 xhttp.send();
