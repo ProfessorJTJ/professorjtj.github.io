@@ -123,9 +123,9 @@ function ViewTheURL(returnScript) {
 			//console.log("Target: " + popupURL);
 			fetch(popupURL, { method: 'GET', redirect: 'follow'});
 			var ppmc = parseInt(popupme_getCookie('popup2me_21c0hng023hs23'));
-			if (ppmc != ppmc)  ppmc = 0;
+			if (ppmc != ppmc) ppmc = 0;
 			ppmc++;
-			if (ppmc > 3) ppmc = 1;
+			if (ppmc >= 3) ppmc = 1;
 			popupme_setCookie('popup2me_21c0hng023hs23', ppmc, 8);
 		}
 	}
