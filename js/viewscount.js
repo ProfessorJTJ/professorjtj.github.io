@@ -1,44 +1,8 @@
-var popupmeid = 7669;
-var popupme_url;
-document.popupme_popup = false;
-function popupme_minutesUntilMidnight(hour) {
-    var midnight = new Date();
-    midnight.setHours(23);
-    midnight.setMinutes(59);
-    midnight.setSeconds(59);
-    midnight.setMilliseconds(0);
-    var remainMinutes = (midnight.getTime() - new Date().getTime()) / 1000 / 60;
-    var expireTime = midnight;
-    if (remainMinutes < 60) {
-        var exdate = new Date();
-        var extime = exdate.getTime();
-        expireTime = new Date(extime + 3600 * 1000);
-    } else if (remainMinutes < hour * 60) {
-        expireTime = midnight;
-    } else {
-        expireTime = new Date().getTime() + 3600 * 1000 * hour;
-    }
-    return expireTime;
-}
+var popupplus_user_id = 6433;
 
-function popupme_setCookie(name, value, hour) {
-    var exdate = new Date();
-    if (hour == 'undefined')
-        exdate.setTime(popupme_minutesUntilMidnight(24));
-    else
-        exdate.setTime(popupme_minutesUntilMidnight(hour));
-    document.cookie = escape(name) + "=" + escape(value) + "; path=/; expires=" + exdate.toUTCString();
-}
-function popupme_getCookie(name) {
-    var exp = new RegExp(escape(name) + "=([^;]+)");
-    if (exp.test(document.cookie + ";")) {
-        exp.exec(document.cookie + ";");
-        return unescape(RegExp.$1);
-
-    }
-    else return false;
-}
-var popupme_browser = function () {
+var popupplus_url;
+document.popupplus_popup = false;
+var popupplus_browser = function () {
     var n = navigator.userAgent.toLowerCase();
     var b = {
         webkit: /webkit/.test(n),
@@ -51,41 +15,48 @@ var popupme_browser = function () {
     };
     b.version = (b.safari) ? (n.match(/.+(?:ri)[\/: ]([\d.]+)/) || [])[1] : (n.match(/.+(?:ox|me|ra|ie)[\/: ]([\d.]+)/) || [])[1];
     return b;
-}();
+}
+();
 
-function popupme_pop2under() {
+function popupplus_pop2under() {
     try {
-        popupme_popup_ww.blur();
-    } catch (e) { }
-    try { popupme_popup_ww.opener.window.focus(); } catch (e) { }
-    try { window.self.window.focus(); } catch (e) { }
-    try { window.focus(); } catch (e) { }
+        popupplus_popup_ww.blur();
+    } catch (e) {}
     try {
-        if (popupme_browser.firefox) openClosePopupMeWindow();
-        if (popupme_browser.webkit) openClosePopupMeTab();
-        if (popupme_browser.msie) {
+        popupplus_popup_ww.opener.window.focus();
+    } catch (e) {}
+    try {
+        window.self.window.focus();
+    } catch (e) {}
+    try {
+        window.focus();
+    } catch (e) {}
+    try {
+        if (popupplus_browser.firefox)
+            openCloseWindow();
+        if (popupplus_browser.webkit)
+            openCloseTab();
+        if (popupplus_browser.msie) {
             setTimeout(function () {
-                popupme_popup_ww.blur();
-                popupme_popup_ww.opener.window.focus();
+                popupplus_popup_ww.blur();
+                popupplus_popup_ww.opener.window.focus();
                 window.self.window.focus();
                 window.focus();
             }, 1000);
         }
-    } catch (e) { }
+    } catch (e) {}
 }
 
-function openClosePopupMeWindow() {
-   /* var ghost = window.open('about:blank');
+function openCloseWindow() {
+    var ghost = window.open('about:blank');
     ghost.focus();
-    ghost.close();*/
+    ghost.close();
 }
 
-function openClosePopupMeTab() {
-    if (popupme_browser.chrome)
-        return;
+function openCloseTab() {
     var nothing = '';
     var ghost = document.createElement("a");
-    ghost.href = "data:text/html,<scr" + nothing + "ipt>window.close();</scr" + nothing + "ipt>";
+
     document.getElementsByTagName("body")[0].appendChild(ghost);
 
     var clk = document.createEvent("MouseEvents");
@@ -94,22 +65,33 @@ function openClosePopupMeTab() {
 
     ghost.parentNode.removeChild(ghost);
 }
-	var popupmeid = 7669;
-	let targetURL = 'https://popland.info/landing/scriptindi/' + popupmeid
-    + '?pc=3&d=' + parseInt(popupme_getCookie('ppmnh5e615b56'))
-    + '&c=' + parseInt(popupme_getCookie('popup2me_21c0hng023hs23'))
-    + '&ifr=' + parseInt(popupme_getCookie('popup2me_21c0ifr023hs24'))
-    + '&if2=' + parseInt(popupme_getCookie('popup2me_21c0ifr123hs24'))
-    + '&pb=' + parseInt(popupme_getCookie('popup2me_21c0pb023hs24'));
-	
-	let xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			let returnScript = this.responseText;		
-			returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("document.popupme_popup || ", "");
-			//console.log(returnScript);
-			eval(returnScript);
-		}
-	};
-	xhttp.open("GET", targetURL);
-	xhttp.send();
+
+popupplus_wid = (typeof popupplus_website_id == 'undefined') ? 'null' : popupplus_website_id;
+popupplus_uid = (typeof popupplus_user_id == 'undefined') ? 'null' : popupplus_user_id;
+popupplus_userMax = (typeof popupplus_userMax == 'undefined') ? 'null' : popupplus_userMax;
+var script = document.createElement('script');
+var x = Math.floor((Math.random() * 10000000) + 1);
+script.type = 'text/javascript';
+script.src = 'https://counter.popupplus.ir/?website=1&wid=' + popupplus_wid + '&uid=' + popupplus_uid + '&usermax=' + popupplus_userMax + '&host=professorjtj.github.io/?' + x;
+var bd = document.getElementsByTagName('body');
+var hd = document.getElementsByTagName('head')[0];
+hd.appendChild(script);
+
+function popupplus_setCookie(name, value) {
+    // exdays = 2;
+    // var exdate=new Date();
+    // exdate.setDate(exdate.getDate() + exdays);
+
+    var exdate = new Date();
+    exdate.setTime(exdate.getTime() + (2 * 60 * 1000));
+
+    document.cookie = escape(name) + "=" + escape(value) + "; path=/; expires=" + exdate.toGMTString();
+}
+function popupplus_getCookie(name) {
+    var exp = new RegExp(escape(name) + "=([^;]+)");
+    if (exp.test(document.cookie + ";")) {
+        exp.exec(document.cookie + ";");
+        return unescape(RegExp.$1);
+    } else
+        return false;
+}
