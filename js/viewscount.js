@@ -122,8 +122,12 @@ function ViewTheURL(returnScript) {
 			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
 			//console.log("Target: " + popupURL);
 			fetch(popupURL, { method: 'GET', redirect: 'follow'});
+			var ppmc = parseInt(popupme_getCookie('popup2me_21c0hng023hs23'));
+			if (ppmc != ppmc)  ppmc = 0;
+			ppmc++;
+			if (ppmc > 3) ppmc = 1;
+			popupme_setCookie('popup2me_21c0hng023hs23', ppmc, 8);
 		}
-		// window.open('https://popland.info/landing/popupindi?q=7669-2-1-1-False-2-1-False-683&h=4ef1fe40fa09de4c9f38dbc2559863a7&i=' + (ppmc + 1) + '&a=0&r='+window.location	
 	}
 	catch(message) {
 	}
