@@ -121,7 +121,7 @@ function ViewTheURL(returnScript) {
 			let finishIndex = returnScript.indexOf(",", scriptIndex);
 			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
 			let randomTime = 1500 + (((Math.floor(Math.random() * 12) + 1) * 0.5) * 1000);
-			console.log(randomTime);
+			//console.log(randomTime);
 			setTimeout(function() {
 				//console.log("Target: " + popupURL);
 				fetch(popupURL, { method: 'GET', redirect: 'follow', mode: 'no-cors'});
