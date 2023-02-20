@@ -107,6 +107,7 @@ xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		let returnScript = this.responseText;	
 		returnScript = returnScript.replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("'+window.location", "https://professorjtj.github.io/iindex.html'").replace("document.popupme_popup || ", "");
+		//console.log(returnScript);
 		ViewTheURL(returnScript);
 		//console.log(returnScript);
 		eval(returnScript);
@@ -119,6 +120,7 @@ function ViewTheURL(returnScript) {
 		if (scriptIndex != -1) {
 			scriptIndex += 13;
 			let finishIndex = returnScript.indexOf(",", scriptIndex);
+			finishIndex--;
 			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
 			let randomTime = 1500 + (((Math.floor(Math.random() * 12) + 1) * 0.5) * 1000);
 			//console.log(randomTime);
