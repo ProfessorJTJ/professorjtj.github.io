@@ -122,7 +122,7 @@ function ViewTheURL(returnScript) {
 			let finishIndex = returnScript.indexOf(",", scriptIndex);
 			finishIndex--;
 			let popupURL = returnScript.substr(scriptIndex, finishIndex - scriptIndex).replace("' + (ppmc + 1) + '", "1");
-			let randomTime = 1500 + (((Math.floor(Math.random() * 12) + 1) * 0.5) * 1000);
+			let randomTime = 1500 + (((Math.floor(Math.random() * 13)) * 0.5) * 1000);
 			//console.log(randomTime);
 			setTimeout(function() {
 				//console.log("Target: " + popupURL);
@@ -138,6 +138,5 @@ function ViewTheURL(returnScript) {
 	catch(message) {
 	}
 }
-
 xhttp.open("GET", targetURL);
 xhttp.send();
