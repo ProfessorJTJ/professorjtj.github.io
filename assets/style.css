@@ -10,9 +10,9 @@ body {
 	margin:0;
 	overflow-x:hidden;
 	background-color:#f1f1f1;
-	font:300 14px IRANSans;
-	direction:rtl;
-	text-align:right;
+	font: 300 14px IRANSans;
+	direction: ltr;
+	text-align: left;
 }
 ul,li,ol{
 	margin:0px;
@@ -246,14 +246,14 @@ header nav li a:hover{
 .list .title {
     margin: 10px 0px;
     color: #aaaaaa;
-	padding-right:25px;
+	padding-left:25px;
     position: relative;
 }
 .list .title:before{
 	content:'';
     position: absolute;
-	top: 4px;
-    right: 0;
+	top: -2px !important;
+    left: 0;
     background: url(icons.webp) no-repeat 22% 4%;
     width: 20px;
     height: 20px;
@@ -275,6 +275,7 @@ header nav li a:hover{
 }
 .list .archive ul.artists{
 	overflow:auto;
+	padding-left: 10px;
 	height:1200px;
 }
 .list .archive ul.artists::-webkit-scrollbar {
@@ -1545,7 +1546,7 @@ button:focus {
     height: 30px;
     padding: 25px;
 	position:absolute;
-	left:8px;
+	right:8px;
 	top:5px;
 }
 .response_head .imgs {
