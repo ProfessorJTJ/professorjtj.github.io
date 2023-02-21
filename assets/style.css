@@ -407,8 +407,7 @@ header nav li a:hover{
 	font-weight:500;
 }
 .posts .post .name .foot_post{
-	display:flex;
-	justify-content:space-between;
+	display:block;
 	color:#9d9d9d;
 	font-size:13px;
 	margin:8px 0;
@@ -469,7 +468,7 @@ header nav li a:hover{
 }
 .post_content .box_right.ads .foot_post .left .more {
 	width: 100%;
-    display: block;
+    display: grid;
 	text-align: center;
 }
 .post_content .box_right.ads .foot_post {
@@ -484,7 +483,7 @@ header nav li a:hover{
     padding-bottom: 15px;
 }
 .post_content .box_right.post .title{
-	padding-right: 15px;
+	padding-left: 15px;
     position: relative;
     font-weight: 500;
     font-size: 15px;
@@ -493,7 +492,7 @@ header nav li a:hover{
 	content:'';
 	position:absolute;
     top: -2px;
-    right: 0;
+    left: 0;
     background:#ffc801;
     width: 8px;
     height: 20px;
@@ -584,13 +583,11 @@ header nav li a:hover{
 	color:#000;
 }
 .post_content .foot_post{
-	display:flex;
-	justify-content:space-between;
+	display:block;
     padding: 7px 0 8px;
 }
 .post_content .foot_post .right {
-	display: flex;
-    justify-content: space-between;
+	display: grid;
 	width: 70%;
 }
 .post_content .foot_post .right .icinfo {
@@ -1462,11 +1459,16 @@ button:focus {
 .sidenav .links .under.show {
 	display:block;
 }
-.sidenav .links .under .list,.sidenav .links ul li  {
+.sidenav .links .under .list  {
 	border-bottom: 1px solid #efefef;
 	direction: rtl;
     text-align: right;
 }
+.sidenav .links ul li {
+	direction: ltr;
+    text-align: left;
+}
+
 .sidenav .links .under .list a,.sidenav .links ul li a {
 	padding:13px 13px;
 	font-size:13px;
@@ -1676,7 +1678,7 @@ button:focus {
     text-align: center;
 	}
 	.post_content .foot_post .left {
-		display: flex;
+		display: grid;
 		justify-content: space-around;
 		margin-top: 15px;
 	}
@@ -1780,7 +1782,7 @@ button:focus {
 	}
 	/*single*/
 	.post_content .foot_post .left {
-		display: flex;
+		display: grid;
 		justify-content: center;
 	}
 	.post_content .foot_post{
