@@ -1,0 +1,2 @@
+(()=>{var a={};jQuery(document).ready(function(){void 0!==rtafr.rules&&rtafr.rules.length>0&&rtafr.rules.forEach(function(a){setTimeout(function(){jQuery("body").children().each(function(){jQuery(this).html($(this).html().replace(RegExp(a.find,"g"),a.replace))})},1e3*a.delay)})})})()
+;
