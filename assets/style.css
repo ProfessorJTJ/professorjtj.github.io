@@ -630,6 +630,7 @@ header nav li a:hover{
     width: 22px;
 }
 .post_content .foot_post .left {
+	display: grid;
 	margin-top: 4px;
 }
 .post_content .foot_post.sng .right {
@@ -1782,8 +1783,7 @@ button:focus {
 	}
 	/*single*/
 	.post_content .foot_post .left {
-		display: grid;
-		justify-content: center;
+		display: flex;
 	}
 	.post_content .foot_post{
 		padding:8px 0;
