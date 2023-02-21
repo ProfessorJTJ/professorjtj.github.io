@@ -97,7 +97,7 @@ header .logo:before{
     position: absolute;
 	top: 0;
     right: 50px;
-    background: url(images/icons.webp) no-repeat 99% 0%;
+    background: url(icons.webp) no-repeat 99% 0%;
     width: 160px;
     height: 50px;
 }
@@ -170,7 +170,7 @@ header nav li a:hover{
     position: absolute;
 	top: -11px;
     right: 4px;
-    background: url(images/icons.webp) no-repeat 2% 2%;
+    background: url(icons.webp) no-repeat 2% 2%;
     width: 21px;
     height: 21px;
 }
@@ -199,7 +199,7 @@ header nav li a:hover{
     position: absolute;
     top: 7px;
     right: 5px;
-    background: url(images/icons.webp) no-repeat 11% 1%;
+    background: url(icons.webp) no-repeat 11% 1%;
     width: 37px;
     height: 32px;
 }
@@ -254,7 +254,7 @@ header nav li a:hover{
     position: absolute;
 	top: 4px;
     right: 0;
-    background: url(images/icons.webp) no-repeat 22% 4%;
+    background: url(icons.webp) no-repeat 22% 4%;
     width: 20px;
     height: 20px;
 }
@@ -542,7 +542,7 @@ header nav li a:hover{
 	position:absolute;
     top: 11px;
     right: 10px;
-	background:url(images/icons.webp) no-repeat 79% 54%;
+	background:url(icons.webp) no-repeat 79% 54%;
 	width:22px;
 	height:22px;
 }
@@ -607,7 +607,7 @@ header nav li a:hover{
 	position:absolute;
 	top:0;
 	right:0;
-	background: url(images/icons.webp) no-repeat 2% 41%;
+	background: url(icons.webp) no-repeat 2% 41%;
     width: 16px;
 	height:17px;
 }
@@ -877,7 +877,7 @@ footer .copyright{
 	position:absolute;
     top: 0;
     right: 0;
-	background:url(images/icons.webp) no-repeat 79% 54%;
+	background:url(icons.webp) no-repeat 79% 54%;
 	width:23px;
 	height:23px;
 }
@@ -936,7 +936,7 @@ footer .copyright span a{
 	font-size:13px;
 }
 .table td .play{
-	background: url(images/icons.webp) no-repeat 53% 41.9%;
+	background: url(icons.webp) no-repeat 53% 41.9%;
     width: 17px;
     height: 18px;
     margin: 0 auto;
@@ -993,7 +993,7 @@ footer .copyright span a{
 	position:absolute;
 	top: 15px;
     right:20px;
-	background:url(images/icons.webp) no-repeat 61.5% 41%;
+	background:url(icons.webp) no-repeat 61.5% 41%;
 	width:20px;
 	height:20px;
 }
@@ -1366,7 +1366,7 @@ button:focus {
     justify-content: center;
 }
 .sidenav .head .logoside {
-	background-image: url(images/icons.webp);
+	background-image: url(icons.webp);
     background-repeat: no-repeat;
 	background-position: 100% 1.1%;
     width: 160px;
@@ -1393,7 +1393,7 @@ button:focus {
 }
 .sidenav .head form input[type="submit"] {
     padding: 0 13px;
-    background: url(images/icons.webp) no-repeat 0% 0.5% #FFF;
+    background: url(icons.webp) no-repeat 0% 0.5% #FFF;
     width: 38px;
     height: 34px;
     position: absolute;
@@ -1403,7 +1403,7 @@ button:focus {
     border: 0;
 }
 .sidenav .cls_side {
-    background: url(images/icons.webp) no-repeat 23.5% 66.5%;
+    background: url(icons.webp) no-repeat 23.5% 66.5%;
     width: 38px;
     height: 34px;
     position: absolute;
@@ -1514,7 +1514,7 @@ button:focus {
 .response_head .reponsesearch label {
 	width: 30px;
 	height:30px;
-	background: url(images/icons.webp) no-repeat 34.5% 66.5%;
+	background: url(icons.webp) no-repeat 34.5% 66.5%;
     margin-top: 5px;
 	margin-right: 11px;
     margin-bottom: 0;
@@ -1540,7 +1540,7 @@ button:focus {
 	display:none;
 }
 .response_head .close {
-	background: url(images/icons.webp) no-repeat 22.7% 67.5%;
+	background: url(icons.webp) no-repeat 22.7% 67.5%;
 	width: 30px;
     height: 30px;
     padding: 25px;
@@ -1556,7 +1556,7 @@ button:focus {
 	width: 100%;
 }
 .response_head .img {
-	background-image: url(images/icons.webp);
+	background-image: url(icons.webp);
 	background-repeat:no-repeat;
     width: 30px;
     height: 30px;
