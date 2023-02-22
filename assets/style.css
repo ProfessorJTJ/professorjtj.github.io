@@ -97,7 +97,7 @@ header .logo:before{
     position: absolute;
 	top: 0;
     right: 50px;
-    background: url(icons.webp) no-repeat 99% 0%;
+    /*background: url(icons.webp) no-repeat 99% 0%;*/
     width: 160px;
     height: 50px;
 }
