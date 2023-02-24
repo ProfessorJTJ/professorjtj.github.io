@@ -1913,3 +1913,33 @@ button:focus {
 	position: relative;
 	color: white;
 }
+
+@media only screen and (max-width: 992px) {
+	.list .archive {
+		padding-top: 7px;
+	}
+}
+
+.artistname b {
+	font-weight: unset;
+}
+
+.lyrics span.cited {
+	animation-name: citedlyric;
+	animation-duration: 0.2s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+@keyframes citedlyric {
+	from { color: white; }
+	to { color: lime; }
+}
+
+.rmp-widgets-container p {
+	font-size: 13px;
+}
+
+.rmp-rating-widget .rmp-icon--ratings {
+	font-size: 35px;
+}
