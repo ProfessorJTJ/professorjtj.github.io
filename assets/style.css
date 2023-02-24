@@ -1901,6 +1901,8 @@ button:focus {
 	}
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
 .lyrics {
 	border-radius: 6px;
 	padding: 10px;
@@ -1912,6 +1914,14 @@ button:focus {
 	background-color: #586674;
 	position: relative;
 	color: white;
+	font-size: 1rem;
+	font-family: 'Tilt Neon';
+}
+
+.lyrics br {
+	content: "";
+	display: block;
+	height: 25px;
 }
 
 @media only screen and (max-width: 992px) {
