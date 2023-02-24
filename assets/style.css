@@ -786,6 +786,8 @@ header nav li a:hover{
 	margin-bottom:15px;
 	position:relative;
 	border-right:48px solid rgb(204, 204, 204);
+	text-align: center;
+	overflow: hidden;
 }
 .fara-main:before{content:"Advertisement";
 	position:absolute;
