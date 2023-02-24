@@ -1907,13 +1907,13 @@ button:focus {
 .lyrics {
 	border-radius: 6px;
 	padding: 20px 10px;
-	max-height: 50vh;
+	max-height: 70vh;
 	overflow: auto;
 	white-space: pre-line;
 	text-align: center;
-	background-color: #586674;
+	background-color: #414a58;
 	position: relative;
-	color: white;
+	color: #f2f2f2;
 	font-size: 1rem;
 	font-family: 'Tilt Neon';
 }
