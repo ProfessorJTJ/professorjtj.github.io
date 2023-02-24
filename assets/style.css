@@ -787,7 +787,7 @@ header nav li a:hover{
 .fara-main:before{content:"Advertisement";
 	position:absolute;
 	font-size:15px;
-	font-family:'IRANSans', tahoma, Arial, sans-serif;transform:rotate(270deg);
+	font-family:'IRANSans', tahoma, Arial, sans-serif;transform:rotate(90deg);
 	right:-60px;
 	top:66px;
 }
@@ -1365,7 +1365,7 @@ button:focus {
     justify-content: center;
 }
 .sidenav .head .logoside {
-	background-image: url(icons.webp);
+	/*background-image: url(icons.webp);*/
     background-repeat: no-repeat;
 	background-position: 100% 1.1%;
     width: 160px;
@@ -1679,7 +1679,7 @@ button:focus {
     text-align: center;
 	}
 	.post_content .foot_post .left {
-		display: grid;
+		display: flex;
 		justify-content: space-around;
 		margin-top: 15px;
 	}
