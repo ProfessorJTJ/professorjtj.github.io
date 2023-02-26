@@ -1956,6 +1956,6 @@ button:focus {
 	font-size: 35px;
 }
 
-wp_page_numbers a {
+#wp_page_numbers a {
     padding: 0px 2px;
 }
