@@ -332,6 +332,7 @@ header nav li a:hover{
 .posts .post figure img{
 	width:100%;
 	height:auto;
+	max-height: 140px;
 }
 .posts .post figure:after {
 	position: absolute;
@@ -1953,4 +1954,8 @@ button:focus {
 
 .rmp-rating-widget .rmp-icon--ratings {
 	font-size: 35px;
+}
+
+wp_page_numbers a {
+    padding: 0px 2px;
 }
