@@ -1944,7 +1944,7 @@ button:focus {
 }
 
 @keyframes citedlyric {
-	from { color: white; }
+	from { color: #f2f2f2; }
 	to { color: lime; }
 }
 
@@ -1957,5 +1957,5 @@ button:focus {
 }
 
 #wp_page_numbers a {
-    padding: 0px 2px;
+    padding: 0px 4px;
 }
