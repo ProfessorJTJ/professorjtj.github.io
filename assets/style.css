@@ -274,7 +274,7 @@ header nav li a:hover{
 }
 .list ul li a:hover {
 	color: #477dc3;
-	padding-right:5px;
+	padding-left:5px;
 }
 .list .archive ul.artists{
 	overflow:auto;
