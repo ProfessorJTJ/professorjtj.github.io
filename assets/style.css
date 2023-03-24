@@ -1936,10 +1936,6 @@ button:focus {
 	font-weight: unset;
 }
 
-.lyrics span {
-	color: #414a58;
-}
-
 .lyrics span.cited {
 	animation-name: citedlyric;
 	animation-duration: 0.4s;
@@ -1948,7 +1944,7 @@ button:focus {
 }
 
 @keyframes citedlyric {
-	from { color: #414a58; }
+	from { color: #f2f2f2; }
 	to { color: lime; }
 }
 
