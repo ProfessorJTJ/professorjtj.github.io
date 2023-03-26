@@ -1938,7 +1938,7 @@ button:focus {
 
 .lyrics span.cited {
 	animation-name: citedlyric;
-	animation-duration: 0.4s;
+	animation-duration: 0.6s;
 	animation-timing-function: ease;
 	animation-fill-mode: forwards;
 }
