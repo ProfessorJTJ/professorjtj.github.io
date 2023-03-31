@@ -1967,6 +1967,12 @@ p.description {
     text-align: left;
     padding: 2px 10px;
     border-radius: 3px;
+	
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 p.description span {
