@@ -62,6 +62,7 @@
 				border-radius: 3px;
 				background-color: #ded9d3;
 				transition: background-color 0.2s ease;
+				margin-bottom: 5px;
 			}
 			
 			.button:hover {
@@ -93,6 +94,7 @@
 				height: 27px;
 				padding-right: 10px;
 				font-size: 0.97rem;
+				max-width: 150px;
 			}
 			
 			input:focus {
@@ -117,9 +119,8 @@
 			<div class="button" onclick="StopAlaram()">Stop Alarm</div>
 			<div class="button" onclick="RegisterHelper()">Register Helper</div>
 		</div>
-		<br />
 		
-		<table id="checkbanks">
+		<table id="checkbanks" style="margin-top: 6px;">
 			<thead>
 				<tr>
 					<td>NO.</td>
@@ -134,8 +135,8 @@
 			<div class="button" onclick="RemoveCheckBank()">Remove Bank</div>
 		</div>
 		
-		<div class="buttonsDIv">
-			<div class="NextCheck offline" id="netStatus">Status: Offline ✖</div>
+		<div class="buttonsDIv" style="margin-top: 1px">
+			<div class="NextCheck offline" style="margin-top: 0px" id="netStatus">Status: Offline ✖</div>
 		</div>
 	</body>
 </html>
