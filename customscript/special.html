@@ -1,0 +1,493 @@
+<html>
+	<head>
+		<title>Martial Loan Alert</title>
+	</head>
+	<body>
+		<style>
+			body {
+				text-align: center;
+				background-color: #d5d0c9;
+				font-size: 1rem;
+			}
+			
+			table, td, th {
+				border: 1px solid;
+			}
+
+			table {
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				max-width: 600px;
+				border-collapse: collapse;
+			}
+			
+			thead tr td:first-child {
+				width: 65px;
+			}
+			
+			td {
+				text-align: center;
+			}
+			
+			.buttonsDIv {
+				margin-top: 10px;
+				text-align: right;
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 600px;
+			}
+			
+			.NextCheck {
+				position: relative;
+				color: #3a6ea5;
+				font-weight: bold;
+				display: inline-block;
+				float: left;
+				margin-top: 6px;
+			}
+			
+			.NextCheck.offline {
+				color: #a52a3a;
+			}
+			
+			.button {
+				display: inline-block;
+				padding: 5px;
+				cursor: pointer;
+				border: 2px solid white;
+				border-radius: 3px;
+				background-color: #ded9d3;
+				transition: background-color 0.2s ease;
+			}
+			
+			.button:hover {
+				background-color: #c8c0b6;
+			}
+			
+			tbody tr td {
+				padding: 4px;
+				transition: background-color 0.2s ease;			
+			}
+			
+			tbody tr td:not(:first-child) {
+				cursor: pointer;
+				background-color: white;				
+			}
+			
+			tbody tr td:not(:first-child):hover {
+				background-color: #c8c0b6;
+			}
+			
+			.scroller {
+				max-height: calc(100vh - 250px);
+				overflow: auto;
+			}
+			
+			input {
+				border: none;
+				border-radius: 4px;
+				height: 27px;
+				padding-right: 10px;
+				font-size: 0.97rem;
+			}
+			
+			input:focus {
+				outline: none;
+			}
+		</style>
+	
+		<div class="scroller">
+			<table id="openbanks">
+				<thead>
+					<tr>
+						<td>NO.</td>
+						<td>Bank</td>
+						<td>Last Open</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="buttonsDIv">
+			<div class="NextCheck">Next Check: 00:00:00</div>
+			<div class="button" onclick="UpdateNow()">Update Now</div>
+			<div class="button" onclick="StopAlaram()">Stop Alarm</div>
+			<div class="button" onclick="RegisterHelper()">Register Helper</div>
+		</div>
+		<br />
+		
+		<table id="checkbanks">
+			<thead>
+				<tr>
+					<td>NO.</td>
+					<td>Check Bank</td>			
+				<tr>
+			</thead>
+		</table>
+		
+		<div class="buttonsDIv">
+			<input style="text-align: right; direction: rtl" dir="rtl" id="checkbankInput" />
+			<div class="button" onclick="AddCheckBank()">Add Bank</div>
+			<div class="button" onclick="RemoveCheckBank()">Remove Bank</div>
+		</div>
+		
+		<div class="buttonsDIv">
+			<div class="NextCheck offline" id="netStatus">Status: Offline ✖</div>
+		</div>
+	</body>
+</html>
+
+<script>
+(function() {
+	let _OpenBanks = [], _CheckBanks = [], 
+		_NextCheck = -1,
+		_AlarmTriggered = false,
+		_lastUpdater = -1;
+		
+	const WaitTime = (30 * 1000);
+	
+	let Initialiser = (function() {
+		setInterval(function() {
+			Timer_Elapsed();
+		}, 1000);
+		
+		LoadCheckBanks();
+	});
+	
+	Initialiser();
+
+	function Timer_Elapsed() {
+		if (_NextCheck == -1 || (_NextCheck - GetTickCount()) < 0)
+		{
+			_NextCheck = GetTickCount() + WaitTime;
+			let nextCheckTime = msToTime(_NextCheck - GetTickCount());		
+			SetNextTimeCheck("Next Check: " + nextCheckTime);
+			
+			UpdateBanksList();
+		}
+		else
+		{
+			let nextCheckTime = msToTime(_NextCheck - GetTickCount());
+			
+			SetNextTimeCheck("Next Check: " + nextCheckTime);
+		}
+	}
+
+	function ShowBanksList() {
+		let banksBody = document.querySelector("#openbanks").querySelector("tbody");
+		if (banksBody != null) {
+			banksBody.remove();
+			
+		}
+		banksBody = document.querySelector("#openbanks");
+		
+		let banksList = document.createElement("tbody");
+		
+		for(let i = 0, j = _OpenBanks.length; i < j; i++) {
+			let bankName = _OpenBanks[i].Name, lastChecked = _OpenBanks[i].bankCheck;
+			
+			let bankItem = document.createElement("tr");
+			let bankID = document.createElement("td");
+			bankID.innerText = i;
+			let bankNameElement = document.createElement("td");
+			bankNameElement.innerText = bankName;
+			let copyBankName = function() {
+				navigator.clipboard.writeText(bankName);
+			}
+			
+			let LastCheckElement = document.createElement("td");
+			LastCheckElement.innerText = lastChecked;
+			bankNameElement.onclick = copyBankName;
+			LastCheckElement.onclick = copyBankName;
+			
+			bankItem.appendChild(bankID);
+			bankItem.appendChild(bankNameElement);
+			bankItem.appendChild(LastCheckElement);
+			banksList.appendChild(bankItem);
+		}
+		
+		banksBody.appendChild(banksList);
+	}
+	
+	function ShowCheckBanksList() {
+		let banksBody = document.querySelector("#checkbanks").querySelector("tbody");
+		if (banksBody != null) {
+			banksBody.remove();
+			
+		}
+		banksBody = document.querySelector("#checkbanks");
+		
+		let banksList = document.createElement("tbody");
+		
+		for(let i = 0, j = _CheckBanks.length; i < j; i++) {
+			let bankName = _CheckBanks[i].Name;
+			
+			let bankItem = document.createElement("tr");
+			let bankID = document.createElement("td");
+			bankID.innerText = i;
+			let bankNameElement = document.createElement("td");
+			bankNameElement.innerText = bankName;
+			bankItem.appendChild(bankID);
+			bankItem.appendChild(bankNameElement);
+			banksList.appendChild(bankItem);
+		}
+		
+		banksBody.appendChild(banksList);
+	}
+	
+	function LoadCheckBanks() {
+		let checkBanks = localStorage.getItem("checkbanks");
+		if (checkBanks == null)
+			return;
+		
+		_CheckBanks = JSON.parse(checkBanks);	
+		ShowCheckBanksList();
+	}
+	
+	function SaveCheckBanks()
+	{
+		if (_CheckBanks == null)
+			return;
+			
+		localStorage.setItem("checkbanks", JSON.stringify(_CheckBanks));
+	}
+	
+	function UpdateBanksList() {
+		let myTimestamp = GetTickCount(), attempts = 0;
+		
+		let sendRequest = function() {
+			attempts++;
+			if (attempts > 3) {
+				SetSystemStatus(false, myTimestamp);
+				return;
+			}
+			const xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4) {
+					if (this.status == 200) {
+						onSuccess(this.responseText);
+					}
+					else {
+						onError();
+					}
+				}
+			};
+			xhttp.open("GET", "https://vam.kandoocn.com/which-banks-is-open?province=07");
+			xhttp.send();
+		};
+		
+		var onSuccess = function(banksResposne) {
+			let where = banksResposne.indexOf("<tbody>");
+			if (where == -1) {
+				onError();
+				return;
+			}
+			
+			_OpenBanks = [];
+			let banksCount = 0;
+			
+			while ((where = banksResposne.indexOf("<tr>", where)) != -1) {
+				banksCount++;
+				where = banksResposne.indexOf("<td>", where);
+				where += 4;
+				let finshPos = banksResposne.indexOf("</td>", where);
+
+				let bankName = banksResposne.substring(where, finshPos);
+
+				where = banksResposne.indexOf("title='", where);
+				where += 7;
+				finshPos = banksResposne.indexOf('\'', where);
+
+				let lastDate = banksResposne.substring(where, finshPos);
+
+				_OpenBanks.push({Name: bankName, bankRow: banksCount, bankCheck: lastDate });
+			}
+			
+			if (banksCount == 0)
+			{
+				onError();
+			}
+			else
+			{
+				Succeded();
+			}
+		};
+		
+		var onError = function() {
+			sendRequest();
+		};
+		
+		var Succeded = function() {
+			ShowBanksList();
+			SetSystemStatus(true, myTimestamp);
+			CheckBanks();
+		}
+		sendRequest();
+	}
+	
+	function GetTickCount() {
+		return Date.now();
+	}
+	
+	function msToTime(duration) {
+		var milliseconds = Math.round((duration % 1000) / 100),
+		seconds = Math.round((duration / 1000) % 60),
+		minutes = Math.floor((duration / (1000 * 60)) % 60),
+		hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+		hours = (hours < 10) ? "0" + hours : hours;
+		minutes = (minutes < 10) ? "0" + minutes : minutes;
+		seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+		return hours + ":" + minutes + ":" + seconds /*+ "." + milliseconds*/;
+	}
+	
+	function SetNextTimeCheck(text) {
+		document.querySelector(".NextCheck").innerText = text;
+	}
+	
+	AddCheckBank = function() {
+		let bankNameInput = document.querySelector("#checkbankInput"), bankName = bankNameInput.value;
+		
+		for (let i = 0, j = _CheckBanks.length; i < j; i++) {
+			if (_CheckBanks[i].Name == bankName) {
+				bankNameInput.value = "";
+				return;
+			}
+		}
+		
+		for (let i = 0, j = _OpenBanks.length; i < j; i++) {
+			if (_OpenBanks[i].Name == bankName) {
+				_CheckBanks.push(_OpenBanks[i]);
+				SaveCheckBanks();
+				ShowCheckBanksList();
+				bankNameInput.value = "";
+				return;
+			}
+		}
+		
+		alert("Bank name wasn't found!");
+	}
+	
+	RemoveCheckBank = function() {
+		let bankNameInput = document.querySelector("#checkbankInput"), bankName = bankNameInput.value;
+	
+		for (let i = 0, j = _CheckBanks.length; i < j; i++) {
+			if (_CheckBanks[i].Name == bankName) {
+				_CheckBanks.splice(i, 1);
+				console.log(_CheckBanks);
+				SaveCheckBanks();
+				ShowCheckBanksList();
+				bankNameInput.value = "";
+				return;
+			}
+		}
+		
+		alert("Bank name wasn't found!");
+	}
+	
+	UpdateNow = function() {
+		 _NextCheck = -1;
+	}
+	
+	function SetSystemStatus(isActive, timestamp)
+	{
+		if (timestamp > _lastUpdater)
+		{
+			_lastUpdater = timestamp;
+			if (isActive)
+			{
+				let statusElement = document.querySelector("#netStatus");
+				statusElement.innerText = "Status: Online ✓";
+				statusElement.className = "NextCheck";
+			}
+			else
+			{
+				let statusElement = document.querySelector("#netStatus");
+				statusElement.innerText = "Status: Offline ✖";
+				statusElement.className = "NextCheck offline";
+			}
+		}
+	}
+	
+	function CheckBanks() {
+		if (_CheckBanks.length == 0)
+            return;
+		
+		for (let i = 0, j = _OpenBanks.length; i < j; i++) {
+			let openBank = _OpenBanks[i];
+			
+			let bankIndex = _CheckBanks.findIndex(function(t) {
+				if (t.Name == openBank.Name)
+					return true;
+				else
+					return false;
+			});
+			
+			if (bankIndex == -1)
+				continue;
+				
+			let bankData = _CheckBanks[bankIndex];
+			
+			//console.log(bankData.Row + " | " + openBank.Row + " | " + openBank.lastChecked + " | " + bankData.lastChecked);
+			
+			//bankRow: banksCount, bankCheck: lastDate });
+			
+			if (bankData.bankRow > openBank.bankRow || openBank.bankCheck != bankData.bankCheck) {
+				TriggerBankAlert();
+				
+				console.log("YES!");
+				
+				bankData.bankRow = openBank.bankRow;
+				bankData.bankCheck = bankData.bankCheck;
+			}
+			else if (bankData.bankRow != openBank.bankRow) {
+				console.log("Yes 2!");
+				bankData.bankRow = openBank.bankRow;
+			}
+			else {
+				console.log("They're the same!");
+			}
+			
+			console.log(bankData);
+		}
+		
+		SaveCheckBanks();
+	}
+	
+	function TriggerBankAlert() {
+		if (!_AlarmTriggered)
+		{
+			if (typeof(JSCodes) == 'undefined') { // on the web
+				
+			}
+			else { // on the app
+				
+			}
+			_AlarmTriggered = true;
+		}
+	}
+	
+	StopAlaram = function() {
+		if (_AlarmTriggered)
+		{
+			if (typeof(JSCodes) == 'undefined') { // on the web
+				
+			}
+			else { // on the app
+				
+			}
+			_AlarmTriggered = false;
+		}
+	};
+	
+	RegisterHelper = function() {
+		if (typeof(JSCodes) == 'undefined') { // on the web
+			alert("Not supported!");
+		}
+		else { // on the app
+			
+		}
+	};
+})();
+</script>
