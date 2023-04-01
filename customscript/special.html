@@ -1,5 +1,8 @@
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Martial Loan Alert</title>
 	</head>
 	<body>
@@ -375,7 +378,6 @@
 		for (let i = 0, j = _CheckBanks.length; i < j; i++) {
 			if (_CheckBanks[i].Name == bankName) {
 				_CheckBanks.splice(i, 1);
-				console.log(_CheckBanks);
 				SaveCheckBanks();
 				ShowCheckBanksList();
 				bankNameInput.value = "";
@@ -429,37 +431,35 @@
 				
 			let bankData = _CheckBanks[bankIndex];
 			
-			//console.log(bankData.Row + " | " + openBank.Row + " | " + openBank.lastChecked + " | " + bankData.lastChecked);
-			
-			//bankRow: banksCount, bankCheck: lastDate });
-			
 			if (bankData.bankRow > openBank.bankRow || openBank.bankCheck != bankData.bankCheck) {
 				TriggerBankAlert();
-				
-				console.log("YES!");
 				
 				bankData.bankRow = openBank.bankRow;
 				bankData.bankCheck = bankData.bankCheck;
 			}
 			else if (bankData.bankRow != openBank.bankRow) {
-				console.log("Yes 2!");
 				bankData.bankRow = openBank.bankRow;
 			}
-			else {
-				console.log("They're the same!");
-			}
-			
-			console.log(bankData);
 		}
 		
 		SaveCheckBanks();
 	}
 	
+	let JSAudio = null;
+	
 	function TriggerBankAlert() {
 		if (!_AlarmTriggered)
 		{
 			if (typeof(JSCodes) == 'undefined') { // on the web
+				JSAudio = new Audio('https://professorjtj.github.io/customscript/beep.wav');
+				try {		
+					JSAudio.loop = true;
+					JSAudio.volume = 1.0;
+					JSAudio.play();
+				}
+				catch(msg) {
 				
+				}
 			}
 			else { // on the app
 				
@@ -472,7 +472,10 @@
 		if (_AlarmTriggered)
 		{
 			if (typeof(JSCodes) == 'undefined') { // on the web
-				
+				if (JSAudio != null) {
+					JSAudio.pause();
+					JSAudio = null;
+				}
 			}
 			else { // on the app
 				
@@ -489,5 +492,11 @@
 			
 		}
 	};
+	
+	document.addEventListener("click", function(e) {
+		if (JSAudio != null && !JSAudio.playing) {
+			JSAudio.play();
+		}
+	});
 })();
 </script>
