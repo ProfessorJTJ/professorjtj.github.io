@@ -1938,14 +1938,15 @@ button:focus {
 
 .lyrics span.cited {
 	animation-name: citedlyric;
-	animation-duration: 0.6s;
+	animation-duration: 1.7s;
 	animation-timing-function: ease;
 	animation-fill-mode: forwards;
 }
 
 @keyframes citedlyric {
-	from { color: #f2f2f2; }
-	to { color: lime; }
+	0% { color: #f2f2f2; }
+	35% { color: #ff981a }
+	100% { color: #f2f2f2; }
 }
 
 .rmp-widgets-container p {
