@@ -1918,6 +1918,9 @@ button:focus {
 	color: #f2f2f2;
 	font-size: 1rem;
 	font-family: 'Tilt Neon';
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
 }
 
 .lyrics br {
@@ -1934,6 +1937,10 @@ button:focus {
 
 .artistname b {
 	font-weight: unset;
+}
+
+.lyrics span {
+	cursor: pointer;
 }
 
 .lyrics span.cited {
