@@ -1945,14 +1945,14 @@ button:focus {
 
 .lyrics span.cited {
 	animation-name: citedlyric;
-	animation-duration: 1.7s;
+	animation-duration: 2s;
 	animation-timing-function: ease;
 	animation-fill-mode: forwards;
 }
 
 @keyframes citedlyric {
 	0% { color: #f2f2f2; }
-	35% { color: #ff981a }
+	30% { color: #ff981a }
 	100% { color: #f2f2f2; }
 }
 
