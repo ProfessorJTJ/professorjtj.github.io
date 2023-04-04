@@ -11,6 +11,9 @@
 				text-align: center;
 				background-color: #d5d0c9;
 				font-size: 1rem;
+				-webkit-user-select: none; /* Safari */
+				-ms-user-select: none; /* IE 10 and IE 11 */
+				user-select: none; /* Standard syntax */
 			}
 			
 			table, td, th {
@@ -436,7 +439,7 @@
 				TriggerBankAlert();
 				
 				bankData.bankRow = openBank.bankRow;
-				bankData.bankCheck = bankData.bankCheck;
+				bankData.bankCheck = openBank.bankCheck;
 			}
 			else if (bankData.bankRow != openBank.bankRow) {
 				bankData.bankRow = openBank.bankRow;
