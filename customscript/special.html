@@ -201,7 +201,12 @@
 			let bankNameElement = document.createElement("td");
 			bankNameElement.innerText = bankName;
 			let copyBankName = function() {
-				navigator.clipboard.writeText(bankName);
+				if (typeof(NativeAndroid) == 'undefined') {
+					navigator.clipboard.writeText(bankName);
+				}
+				else {
+					NativeAndroid.copyToClipboard(bankName);
+				}
 			}
 			
 			let LastCheckElement = document.createElement("td");
@@ -468,7 +473,7 @@
 				}
 			}
 			else { // on the app
-				
+				JSCodes.TriggerBankAlert();
 			}
 			_AlarmTriggered = true;
 		}
@@ -484,7 +489,7 @@
 				}
 			}
 			else { // on the app
-				
+				JSCodes.StopAlaram();
 			}
 			_AlarmTriggered = false;
 		}
@@ -495,7 +500,7 @@
 			alert("Not supported!");
 		}
 		else { // on the app
-			
+			JSCodes.RegisterHelper();
 		}
 	};
 	
