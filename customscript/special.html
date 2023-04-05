@@ -154,7 +154,7 @@
 		_AlarmTriggered = false,
 		_lastUpdater = -1;
 		
-	const WaitTime = (30 * 1000);
+	const WaitTime = (15 * 1000);
 	
 	let Initialiser = (function() {
 		setInterval(function() {
@@ -177,7 +177,7 @@
 			
 			
 			let date = new Date();	
-			console.log("Refreshing banks... " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+			console.log("Refreshing banks... " + ("0" + date.getHours()).slice(-2)  + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2));
 		}
 		else
 		{
