@@ -1983,6 +1983,13 @@ p.description {
 	hyphens: auto;
 }
 
+@media (pointer:coarse), (hover: none), (hover:on-demand) {
+    p.description {
+		max-height: calc(50.0vh - 60px);
+		overflow: auto;
+	}
+}
+
 p.description span {
 	color: #009999;
 	font-weight: 600;
