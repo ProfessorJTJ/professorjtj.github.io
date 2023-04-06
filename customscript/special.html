@@ -155,7 +155,9 @@
 		_lastUpdater = -1;
 		
 	lastTimerCall = -1;
-		
+	
+	let startingPoint = -1;
+	
 	const WaitTime = (15 * 1000);
 	
 	let Initialiser = (function() {
@@ -459,6 +461,16 @@
 			}
 			else if (bankData.bankRow != openBank.bankRow) {
 				bankData.bankRow = openBank.bankRow;
+			}
+			else {
+				if (startingPoint == -1) {
+					startingPoint = GetTickCount();
+				}
+				else {
+					if ((GetTickCount() - startingPoint) > (10 * 60 * 1000)) {
+						TriggerBankAlert();
+					}
+				}
 			}
 		}
 		
