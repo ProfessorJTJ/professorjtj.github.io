@@ -154,6 +154,8 @@
 		_AlarmTriggered = false,
 		_lastUpdater = -1;
 		
+	lastTimerCall = -1;
+		
 	const WaitTime = (15 * 1000);
 	
 	let Initialiser = (function() {
@@ -167,6 +169,8 @@
 	Initialiser();
 
 	function Timer_Elapsed() {
+		lastTimerCall = GetTickCount();
+	
 		if (_NextCheck == -1 || (_NextCheck - GetTickCount()) < 0)
 		{
 			_NextCheck = GetTickCount() + WaitTime;
@@ -344,7 +348,7 @@
 		sendRequest();
 	}
 	
-	function GetTickCount() {
+	GetTickCount = function() {
 		return Date.now();
 	}
 	
