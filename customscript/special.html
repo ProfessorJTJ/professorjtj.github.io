@@ -168,7 +168,7 @@
 	
 	Initialiser();
 
-	function Timer_Elapsed() {
+	Timer_Elapsed = function() {
 		lastTimerCall = GetTickCount();
 	
 		if (_NextCheck == -1 || (_NextCheck - GetTickCount()) < 0)
