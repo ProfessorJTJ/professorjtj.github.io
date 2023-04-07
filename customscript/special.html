@@ -153,10 +153,6 @@
 		_NextCheck = -1,
 		_AlarmTriggered = false,
 		_lastUpdater = -1;
-		
-	lastTimerCall = -1;
-	
-	let startingPoint = -1;
 	
 	const WaitTime = (15 * 1000);
 	
@@ -170,8 +166,7 @@
 	
 	Initialiser();
 
-	Timer_Elapsed = function() {
-		lastTimerCall = GetTickCount();
+	function Timer_Elapsed() {
 	
 		if (_NextCheck == -1 || (_NextCheck - GetTickCount()) < 0)
 		{
@@ -350,7 +345,7 @@
 		sendRequest();
 	}
 	
-	GetTickCount = function() {
+	function GetTickCount() {
 		return Date.now();
 	}
 	
@@ -461,16 +456,6 @@
 			}
 			else if (bankData.bankRow != openBank.bankRow) {
 				bankData.bankRow = openBank.bankRow;
-			}
-			else {
-				if (startingPoint == -1) {
-					startingPoint = GetTickCount();
-				}
-				else {
-					if ((GetTickCount() - startingPoint) > (10 * 60 * 1000)) {
-						TriggerBankAlert();
-					}
-				}
 			}
 		}
 		
