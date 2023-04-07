@@ -213,6 +213,8 @@
 				else {
 					NativeAndroid.copyToClipboard(bankName);
 				}
+				
+				document.querySelector("#checkbankInput").value = bankName;
 			}
 			
 			let LastCheckElement = document.createElement("td");
