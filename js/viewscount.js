@@ -46,7 +46,7 @@
 	function ProceedWithPopUP() {
 		let showPopUp = function() {
 			let meItem = localStorage.getItem("popcornlast");
-			if (meItem == null || (Date.now() - parseInt(meItem)) > (6 * 60 * 60 * 1000)) {
+			if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
 				return true;
 			}
 			return false;
