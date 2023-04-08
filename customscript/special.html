@@ -485,6 +485,9 @@
 			}
 			_AlarmTriggered = true;
 		}
+		else if (typeof(JSCodes) != 'undefined') {
+			JSCodes.TriggerBankAlert();
+		}
 	}
 	
 	TriggerAlaram = function() {
@@ -504,6 +507,9 @@
 				JSCodes.StopAlaram();
 			}
 			_AlarmTriggered = false;
+		}
+		else if (typeof(JSCodes) != 'undefined') {
+			JSCodes.StopAlaram();
 		}
 	};
 	
