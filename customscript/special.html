@@ -528,4 +528,60 @@
 		}
 	});
 })();
+
+(function() {
+
+	let lastAlarm = localStorage.getItem("lastAlarm");
+	if (lastAlarm != null) {
+		let todayDate = new Date();
+		
+		let todayDateFormation = todayDate.getFullYear().toString() + todayDate.getMonth().toString() + todayDate.getDate().toString();
+		if (lastAlarm == todayDateFormation) {
+			console.log("General alarm already triggered");
+			return;
+		}
+	}
+	
+	let theIntervalTimer = setInterval(function() {
+		Timer_Elapsed();
+	}, 15000);
+	
+	let Timer_Elapsed = function() {
+		const xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200) {
+					onSuccess(this.responseText);
+				}
+			}
+		};
+		xhttp.open("GET", "https://vam.kandoocn.com/which-banks-is-open?bank=12");
+		xhttp.send();
+	};
+	
+	let onSuccess = function(response) {
+		if (theIntervalTimer == null)
+			return;
+			
+		if (response.includes("امروز")) {
+			clearInterval(theIntervalTimer);
+			theIntervalTimer = null;
+			
+			let todayDate = new Date();			
+			let todayDateFormation = todayDate.getFullYear().toString() + todayDate.getMonth().toString() + todayDate.getDate().toString();
+			localStorage.setItem("lastAlarm", todayDateFormation);
+			
+			TriggerAlarm();
+		}
+	};
+	
+	
+	let TriggerAlarm = function() {
+		if (typeof(JSCodes) != 'undefined') {
+			JSCodes.TriggerSoftBankAlert();
+		}
+	};
+	
+	Timer_Elapsed();
+})();
 </script>
