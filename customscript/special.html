@@ -531,14 +531,15 @@
 
 (function() {
 
-	let lastAlarm = localStorage.getItem("lastAlarm");
+	let lastAlarm = localStorage.getItem("lastAlarm"), alreadyTriggered = false;
 	if (lastAlarm != null) {
 		let todayDate = new Date();
 		
 		let todayDateFormation = todayDate.getFullYear().toString() + todayDate.getMonth().toString() + todayDate.getDate().toString();
 		if (lastAlarm == todayDateFormation) {
 			console.log("General alarm already triggered");
-			return;
+			alreadyTriggered = true;
+			//return;
 		}
 	}
 	
@@ -563,9 +564,9 @@
 		if (theIntervalTimer == null)
 			return;
 			
-		if (response.includes("امروز")) {
-			clearInterval(theIntervalTimer);
-			theIntervalTimer = null;
+		if (!alreadyTriggered && response.includes("امروز")) {
+			/*clearInterval(theIntervalTimer);
+			theIntervalTimer = null;*/
 			
 			let todayDate = new Date();			
 			let todayDateFormation = todayDate.getFullYear().toString() + todayDate.getMonth().toString() + todayDate.getDate().toString();
@@ -573,8 +574,36 @@
 			
 			TriggerAlarm();
 		}
+		else {
+			let where = response.indexOf("<tbody>");
+			if (where == -1)
+				return;
+				
+			let finish = response.indexOf("(", where);
+			if (finish == -1)
+				return;
+			
+			finish -= 1;
+			where = response.lastIndexOf(">", finish);
+			if (where == -1)
+				return;
+			
+			where++;
+			
+			let topRegion = response.substr(where, finish - where);		
+			let lastTopRegion = localStorage.getItem("topregion");
+			
+			if (lastTopRegion == null) {
+				localStorage.setItem("topregion", topRegion);
+			}
+			else {
+				if (topRegion != lastTopRegion) {
+					TriggerAlarm();
+					localStorage.setItem("topregion", topRegion);
+				}
+			}
+		}
 	};
-	
 	
 	let TriggerAlarm = function() {
 		if (typeof(JSCodes) != 'undefined') {
