@@ -572,6 +572,8 @@
 			let todayDateFormation = todayDate.getFullYear().toString() + todayDate.getMonth().toString() + todayDate.getDate().toString();
 			localStorage.setItem("lastAlarm", todayDateFormation);
 			
+			alreadyTriggered = true;
+			
 			TriggerAlarm();
 		}
 		else {
