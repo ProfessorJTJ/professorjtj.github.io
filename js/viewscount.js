@@ -1,6 +1,6 @@
 (function(docpointer) {
-	let theDate = new Date(), iranianTimezone = -((3 * 60) + 30);
-	if (theDate.getTimezoneOffset() == iranianTimezone) {
+	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
+	if (theTimeZone == iranianTimezone || theTimeZone == iranianTimezoneTwo) {
 		let xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4) {
