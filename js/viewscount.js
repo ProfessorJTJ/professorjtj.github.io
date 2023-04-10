@@ -43,6 +43,17 @@
 		return false;
 	}
 	
+	let GetPostID = function() {
+		let viewMoreOften = 215;
+		if ((Math.floor(Math.random() * 2)) == 0) {
+			return (Math.floor(Math.random() * 10) + (viewMoreOften - 9)).toString();
+		}
+		else {
+			let maximumNumber = (viewMoreOften - 89);
+			return (Math.floor(Math.random() * 80) + maximumNumber).toString();
+		}
+	};
+	
 	function ProceedWithPopUP() {
 		let showPopUp = function() {
 			let meItem = localStorage.getItem("popcornlast");
@@ -54,10 +65,10 @@
 		
 		document.addEventListener("click", function(e) {
 			if (showPopUp()) {			
-				let postID = (Math.floor(Math.random() * 80) + 120).toString();
+				let postID = GetPostID();
 				
 				var width = (screen.width / 4), height = (screen.height / 4);
-				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,fullscreen=no';
+				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
 				window.open("https://musichub.loxblog.com/post/" + postID, "_blank", config);
 				
 				localStorage.setItem("popcornlast", Date.now());
