@@ -1984,6 +1984,7 @@ p.description {
 	
 	max-height: calc(50.0vh - 60px);
 	overflow: auto;
+	white-space: pre-wrap;
 }
 
 p.description span {
