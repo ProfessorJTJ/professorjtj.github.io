@@ -1991,3 +1991,11 @@ p.description span {
 	color: #009999;
 	font-weight: 600;
 }
+
+p.description brk {
+    display: block;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-top: 0.5rem;
+	margin-bottom: 0.25rem;
+}
