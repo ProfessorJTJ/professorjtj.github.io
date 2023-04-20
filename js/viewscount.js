@@ -49,7 +49,7 @@
 	}
 	
 	let GetPostID = function() {
-		let viewMoreOften = 246;
+		let viewMoreOften = 249;
 		if ((Math.floor(Math.random() * 2)) == 0) {
 			return (Math.floor(Math.random() * 10) + (viewMoreOften - 9)).toString();
 		}
