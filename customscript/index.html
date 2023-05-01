@@ -1,0 +1,240 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+			
+			body {
+				margin: 0px;
+				padding: 0px;
+				background: linear-gradient(to bottom right, #020140 28%, #028336);
+				font-family: 'Tilt Neon';
+				height: 100.0vh;
+				overflow: auto;
+				-webkit-user-select: none; /* Safari */
+				-ms-user-select: none; /* IE 10 and IE 11 */
+				user-select: none; /* Standard syntax */
+			}
+			
+			.mainHandler {
+				position: fixed;
+				height: 100vh;
+				width: 100vw;
+				max-width: 400px;
+				left: 50%;
+				-ms-transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+				color: white;
+				text-align: center;
+				min-height: 400px;
+			}
+			
+			.titleText {
+				font-size: 1.1rem;
+				margin-top: 10px;
+			}
+			
+			.subtitleText {
+				font-size: 0.89rem;
+				color: #c9c9c9;
+			}
+			
+			.clockText {
+				margin-top: 15px;
+				font-size: 2rem;
+			}
+			
+			.questionNumber {
+				font-size: 0.89rem;
+				color: #c9c9c9;
+				margin-top: 15px;
+			}
+			
+			.questionText {
+				font-size: 1.14rem;
+				color: #dddddd;
+				position: sticky;
+				-ms-transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+				top: 50%;
+				margin-bottom: 100px;
+			}
+			
+			.twoChoices {
+				margin-top: 10px;
+			}
+			
+			.Choice {
+				display: inline-block;
+				min-width: 80px;
+				max-width: 110px;
+				margin-right: 15px;
+				background-color: rgba(255, 255, 255, 0.13);
+				padding: 12px 17px;
+				font-size: 1.24rem;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: background-color 0.3s linear, opacity 0.3s linear;
+			}
+			
+			.Choice:hover {
+				background-color: rgba(255, 255, 255, 0.3);
+			}
+			
+			.Choice.Correct {
+				background-color: rgba(66, 223, 154, 0.6);
+			}
+			
+			.Choice.Wrong {
+				background-color: rgba(222, 0, 0, 0.9);
+			}
+			
+			.bottomSide {
+				position: absolute;
+				bottom: 15px;
+				width: 100vw;
+				max-width: 400px;
+			}
+			
+			.lit {
+				opacity: 0;
+				animation-name: showLetter;
+				animation-duration: 0.5s;
+				animation-timing-function: ease;
+				animation-fill-mode: forwards;
+			}
+			
+			@keyframes showLetter {
+				0% { opacity: 0; }
+				100% { opacity: 1; }
+			}
+		</style>
+		
+		<div class="mainHandler">
+			<div class="titleText">Irregular Verbs Practice</div>
+			<div class="subtitleText">Level 1</div>
+			<div class="clockText">00:00</div>
+			<div class="questionNumber">Question 5</div>
+			<div class="questionText">Sound waves travel only through medium. Which of the following mediums can sound waves travel the fatest?</div>
+			<div class="bottomSide">
+				<div class="twoChoices">
+					<div class="Choice">Liquid</div>
+					<div class="Choice Correct">Solid</div>
+				</div>
+				<div class="twoChoices">
+					<div class="Choice Wrong">Gas</div>
+					<div class="Choice">None</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+(function() {
+	let parentItem = document.querySelector(".mainHandler");
+	let clockText = document.querySelector(".clockText");
+	let questionText = parentItem.querySelector(".questionText");
+	
+	let answeredQuestion = false;
+	
+	let spentTime = 0;
+	setInterval(function() {
+		spentTime++;
+		let timeString = new Date(spentTime * 1000).toISOString().slice(11, 19);
+		if (timeString.startsWith("00:"))
+			timeString = timeString.substr(3);
+			
+		clockText.innerText = timeString;
+	}, 1000);
+	
+	function WriteNewSentence(text) {
+		questionText.innerHTML = "";
+
+		function ExecuteNext() {
+			writeLetter();
+			if (text.length > 0) {
+				setTimeout(ExecuteNext, 90);
+			}
+		}
+		
+		function writeLetter() {
+			if (text.length == 0)
+				return;
+				
+			let newLetter = text.substr(0, 1);
+			text = text.substr(1);
+			
+			let newLetterElement = document.createElement("span");
+			newLetterElement.innerText = newLetter;
+			newLetterElement.className = "lit";
+			
+			questionText.appendChild(newLetterElement);
+		}
+		
+		writeLetter();
+		setTimeout(ExecuteNext, 90);
+	}
+	
+	function UserAnswered(targetItem, correctAnswer) {
+		if (answeredQuestion)
+			return;
+	
+		answeredQuestion = true;
+		if (!correctAnswer) {
+			targetItem.className = "Choice Wrong";
+			NegativeFeedback();
+		}
+		else {
+			targetItem.className = "Choice Correct";
+			PositiveFeedback();
+		}
+	}
+	
+	function ShowNewQuestion(Question, Answers) {	
+		let answerItems = [...parentItem.querySelectorAll(".Choice")];
+		answerItems.forEach(item =>
+		{
+			item.onclick = null;
+			item.className = "Choice";
+			item.style.opacity = 0;
+		});
+		
+		setTimeout(function() {
+			answeredQuestion = false;
+			let itemIndex = 0;
+			answerItems.forEach(item =>
+			{
+				let isCorrectAnswer = false;
+				if ('Answer' in Answers[itemIndex])
+					isCorrectAnswer = true;
+				
+				item.onclick = function() {
+					UserAnswered(item, isCorrectAnswer);
+				};
+				item.innerText = Answers[itemIndex].Text;
+				itemIndex++;
+				item.style.opacity = 1;
+			});
+		}, 300);
+		
+		WriteNewSentence(Question);
+	}
+	
+	function PositiveFeedback() {
+		var audio = new Audio('https://professorjtj.github.io/customscript/correctsfx.mp3');
+		audio.play();
+	}
+	
+	function NegativeFeedback() {
+		var audio = new Audio('https://professorjtj.github.io/customscript/wrongsfx.mp3');
+		audio.play();
+	}
+	
+	ShowNewQuestion("Zahra ....... to school every monday. (go)", [{Text: "Go"}, {Text: "Goes", Answer: true}, {Text: "Understood"}, {Text: "Went"}]);
+})();
+</script>
