@@ -56,6 +56,7 @@
 			}
 			
 			.questionText {
+				padding: 0px 10px;
 				font-size: 1.14rem;
 				color: #dddddd;
 				position: sticky;
@@ -72,8 +73,8 @@
 			
 			.Choice {
 				display: inline-block;
-				min-width: 80px;
-				max-width: 110px;
+				width: calc(50% - 60px);
+				/*max-width: 110px;*/
 				margin-right: 15px;
 				background-color: rgba(255, 255, 255, 0.13);
 				padding: 12px 17px;
@@ -98,17 +99,19 @@
 			
 			.bottomSide {
 				position: absolute;
-				bottom: 15px;
+				padding: 0px 10px;
+				top: calc(100.0vh - 135px);
 				width: 100vw;
 				max-width: 400px;
 			}
 			
 			.lit {
 				opacity: 0;
-				animation-name: showLetter;
+				transition: opacity 0.25s linear;
+				/*animation-name: showLetter;
 				animation-duration: 0.5s;
 				animation-timing-function: ease;
-				animation-fill-mode: forwards;
+				animation-fill-mode: forwards;*/
 			}
 			
 			@keyframes showLetter {
@@ -121,16 +124,16 @@
 			<div class="titleText">Irregular Verbs Practice</div>
 			<div class="subtitleText">Level 1</div>
 			<div class="clockText">00:00</div>
-			<div class="questionNumber">Question 5</div>
-			<div class="questionText">Sound waves travel only through medium. Which of the following mediums can sound waves travel the fatest?</div>
+			<div class="questionNumber">Question 1</div>
+			<div class="questionText"></div>
 			<div class="bottomSide">
 				<div class="twoChoices">
-					<div class="Choice">Liquid</div>
-					<div class="Choice Correct">Solid</div>
+					<div class="Choice"></div>
+					<div class="Choice Correct"></div>
 				</div>
 				<div class="twoChoices">
-					<div class="Choice Wrong">Gas</div>
-					<div class="Choice">None</div>
+					<div class="Choice Wrong"></div>
+					<div class="Choice"></div>
 				</div>
 			</div>
 		</div>
@@ -141,7 +144,11 @@
 (function() {
 	let parentItem = document.querySelector(".mainHandler");
 	let clockText = document.querySelector(".clockText");
+	let subtitleText = parentItem.querySelector(".subtitleText");
 	let questionText = parentItem.querySelector(".questionText");
+	let questionNumberText = parentItem.querySelector(".questionNumber");
+	
+	let questionNumber = 0;
 	
 	let answeredQuestion = false;
 	
@@ -157,38 +164,56 @@
 	
 	function WriteNewSentence(text) {
 		questionText.innerHTML = "";
-
-		function ExecuteNext() {
-			writeLetter();
-			if (text.length > 0) {
-				setTimeout(ExecuteNext, 90);
-			}
-		}
-		
-		function writeLetter() {
-			if (text.length == 0)
-				return;
-				
-			let newLetter = text.substr(0, 1);
-			text = text.substr(1);
-			
+		let lettersList = text.split("");
+		for (let i = 0; i < lettersList.length; i++) {
 			let newLetterElement = document.createElement("span");
-			newLetterElement.innerText = newLetter;
+			newLetterElement.innerText = lettersList[i];
 			newLetterElement.className = "lit";
 			
 			questionText.appendChild(newLetterElement);
 		}
 		
+		let nextLettrID = 0;
+		
+		function ExecuteNext() {
+			writeLetter();
+			if (nextLettrID < questionText.querySelectorAll("span").length) {
+				setTimeout(ExecuteNext, 50);
+			}
+		}
+		
+		function writeLetter() {
+			let allLetters = questionText.querySelectorAll("span");
+			if (nextLettrID == allLetters.length)
+				return;
+			
+			if (answeredQuestion) {				
+				for (let i = nextLettrID, j = allLetters.length; i < j; i++) {
+					allLetters[i].style.opacity = 1;
+				}
+				
+				nextLettrID = allLetters.length;
+			}
+			else {
+				allLetters[nextLettrID].style.opacity = 1;
+				nextLettrID++;
+			}
+		}
+		
 		writeLetter();
-		setTimeout(ExecuteNext, 90);
+		setTimeout(ExecuteNext, 50);
 	}
 	
-	function UserAnswered(targetItem, correctAnswer) {
+	let incorrectAnswers = 0;
+	function UserAnswered(targetItem, correctItem, correctAnswer) {
 		if (answeredQuestion)
 			return;
 	
+		questionText.innerHTML = questionText.innerText.replace(".........", "<span style='color: lime; font-weight: bold'>" + correctItem.innerText.toLowerCase() + "</span>");
+	
 		answeredQuestion = true;
 		if (!correctAnswer) {
+			correctItem.className = "Choice Correct";
 			targetItem.className = "Choice Wrong";
 			NegativeFeedback();
 		}
@@ -196,6 +221,23 @@
 			targetItem.className = "Choice Correct";
 			PositiveFeedback();
 		}
+		
+		setTimeout(function() {
+			if (correctAnswer) {
+				incorrectAnswers = 0;
+				ShowNextQuestion(true, false);
+			}
+			else {
+				incorrectAnswers++;
+				if (incorrectAnswers >= 3) {
+					incorrectAnswers = 0;
+					ShowNextQuestion(false, true);
+				}
+				else {
+					ShowNextQuestion(false, false);
+				}
+			}
+		}, 1000);
 	}
 	
 	function ShowNewQuestion(Question, Answers) {	
@@ -210,22 +252,25 @@
 		setTimeout(function() {
 			answeredQuestion = false;
 			let itemIndex = 0;
+			let correctItem = null;
 			answerItems.forEach(item =>
 			{
 				let isCorrectAnswer = false;
-				if ('Answer' in Answers[itemIndex])
+				if ('Answer' in Answers[itemIndex]) {
+					correctItem = item;
 					isCorrectAnswer = true;
+				}
 				
 				item.onclick = function() {
-					UserAnswered(item, isCorrectAnswer);
+					UserAnswered(item, correctItem, isCorrectAnswer);
 				};
 				item.innerText = Answers[itemIndex].Text;
 				itemIndex++;
 				item.style.opacity = 1;
 			});
+			
+			WriteNewSentence(Question);
 		}, 300);
-		
-		WriteNewSentence(Question);
 	}
 	
 	function PositiveFeedback() {
@@ -238,6 +283,140 @@
 		audio.play();
 	}
 	
-	ShowNewQuestion("Zahra ....... to school every monday. (go)", [{Text: "Go"}, {Text: "Goes", Answer: true}, {Text: "Understood"}, {Text: "Went"}]);
+	
+	let pronouns = ["He", "Ali", "Reza", "Sajjad", "Hussain", "She", "Zahra", "Maryam", "Kemya", "Fatimah", "Zainab"];
+	let LevelsData =
+	[
+		{
+			Count: 5,
+			Questions: [
+				{ // first structure
+					Sentence: [
+						pronouns,
+						"......... to",
+						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						". (go)"
+					],
+					Answers: [
+						"Goes", "Go", "Going", "Went"
+					]
+				},
+			]
+		},
+		{
+			Count: 5,
+			Questions: [
+				{ // first structure
+					Sentence: [
+						pronouns,
+						"......... to",
+						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						". (go)"
+					],
+					Answers: [
+						"Goes", "Go", "Going", "Went"
+					]
+				},
+			]
+		}
+	];
+	
+	function ShowNextQuestion(gofoward, demote) {
+		if (gofoward)
+			questionNumber++;
+		
+		let levelID = -1;
+		
+		let totalQuestions = 0;
+		for (let i = 0, j = LevelsData.length; i < j; i++) {
+			totalQuestions += LevelsData[i].Count;
+			if (questionNumber < totalQuestions) {
+				levelID = i;
+				break;
+			}
+		}
+		
+		if (levelID == -1) {
+			levelID = LevelsData.length - 1;
+		}
+		
+		if (demote) {
+			if (levelID == 0) {
+				questionNumber = 1;
+			}
+			else {
+				let myQuestion = 0;
+				for (let i = 0; i < levelID; i++) {
+					if (i == (levelID - 1)) {
+						myQuestion += Math.floor(LevelsData[i].Count / 2);
+					}
+					else {
+						myQuestion += LevelsData[i].Count;
+					}
+				}
+				questionNumber = myQuestion;
+			}
+		}
+		
+		subtitleText.innerText = "Level " + (levelID + 1).toString();
+		
+		questionNumberText.innerText = "Question " + questionNumber;
+		
+		FormQuestion(LevelsData[levelID].Questions);
+	}
+	
+	function FormQuestion(questionData) {
+		let questionID = Math.floor(Math.random() * questionData.length);
+		let question = questionData[questionID];
+		
+		let questionString = "";
+		
+		for (let i = 0, j = question.Sentence.length; i < j; i++) {
+			if (i > 0)
+				questionString += " ";
+				
+			if (Array.isArray(question.Sentence[i])) {
+				questionString += question.Sentence[i][Math.floor(Math.random() * question.Sentence[i].length)];
+			}
+			else {
+				questionString += question.Sentence[i];
+			}
+		}
+		
+		
+		let answersArray = question.Answers.slice();
+		for (let i = 0, j = answersArray.length; i < j; i++) {
+			if (i == 0)
+				answersArray[i] = {Text: answersArray[i], Answer: true};
+			else
+				answersArray[i] = {Text: answersArray[i]};
+		}
+		shuffle(answersArray);
+		
+		ShowNewQuestion(questionString, answersArray);
+	}
+	ShowNextQuestion(true, false);
+	
+	
+	function shuffle(array) {
+		let currentIndex = array.length,  randomIndex;
+
+		// While there remain elements to shuffle.
+		while (currentIndex != 0) {
+
+		// Pick a remaining element.
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [
+		array[randomIndex], array[currentIndex]];
+		}
+
+		return array;
+	}
+	//ShowNewQuestion("Zahra ....... to school every monday. (go)", [{Text: "Go"}, {Text: "Goes", Answer: true}, {Text: "Understood"}, {Text: "Went"}]);
 })();
 </script>
