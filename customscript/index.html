@@ -262,6 +262,7 @@
 				}
 				
 				item.onclick = function() {
+					item.blur();
 					UserAnswered(item, correctItem, isCorrectAnswer);
 				};
 				item.innerText = Answers[itemIndex].Text;
@@ -282,46 +283,6 @@
 		var audio = new Audio('https://professorjtj.github.io/customscript/wrongsfx.mp3');
 		audio.play();
 	}
-	
-	
-	let pronouns = ["He", "Ali", "Reza", "Sajjad", "Hussain", "She", "Zahra", "Maryam", "Kemya", "Fatimah", "Zainab"];
-	let LevelsData =
-	[
-		{
-			Count: 5,
-			Questions: [
-				{ // first structure
-					Sentence: [
-						pronouns,
-						"......... to",
-						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
-						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
-						". (go)"
-					],
-					Answers: [
-						"Goes", "Go", "Going", "Went"
-					]
-				},
-			]
-		},
-		{
-			Count: 5,
-			Questions: [
-				{ // first structure
-					Sentence: [
-						pronouns,
-						"......... to",
-						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
-						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
-						". (go)"
-					],
-					Answers: [
-						"Goes", "Go", "Going", "Went"
-					]
-				},
-			]
-		}
-	];
 	
 	function ShowNextQuestion(gofoward, demote) {
 		if (gofoward)
@@ -374,9 +335,11 @@
 		let questionString = "";
 		
 		for (let i = 0, j = question.Sentence.length; i < j; i++) {
-			if (i > 0)
-				questionString += " ";
-				
+			if (i > 0) {
+				if (Array.isArray(question.Sentence[i]) || question.Sentence[i] != "." && !question.Sentence[i].startsWith(". "))
+					questionString += " ";
+			}
+			
 			if (Array.isArray(question.Sentence[i])) {
 				questionString += question.Sentence[i][Math.floor(Math.random() * question.Sentence[i].length)];
 			}
@@ -397,8 +360,6 @@
 		
 		ShowNewQuestion(questionString, answersArray);
 	}
-	ShowNextQuestion(true, false);
-	
 	
 	function shuffle(array) {
 		let currentIndex = array.length,  randomIndex;
@@ -417,6 +378,426 @@
 
 		return array;
 	}
+	
+	let pronouns = ["He", "Ali", "Reza", "Sajjad", "Hussain", "She", "Zahra", "Maryam", "Kemya", "Fatimah", "Zainab"],
+		pluralPronouns = ["You", "They", "We", "People"];
+	let LevelsData =
+	[
+		{
+			Count: 5,
+			Questions: [
+				{ // first structure
+					Sentence: [
+						pronouns,
+						"......... to",
+						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						"."
+					],
+					Answers: [
+						"Goes", "Go", "Going", "Went"
+					]
+				},
+				{ // first structure
+					Sentence: [
+						pluralPronouns,
+						"......... to",
+						["school", "the shop", "the stadium", "the gym", "the bakery", "the restaurdant"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						"."
+					],
+					Answers: [
+						"Go", "Goes", "Going", "Went"
+					]
+				},
+				{ // first structure
+					Sentence: [
+						pronouns,
+						".........",
+						["football", "tennis", "basketball", "soccer", "golf", "handball", "volleyball"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						"."
+					],
+					Answers: [
+						"Plays", "Play", "Playing", "Played"
+					]
+				},
+				{ // first structure
+					Sentence: [
+						pluralPronouns,
+						".........",
+						["football", "tennis", "basketball", "soccer", "golf", "handball", "volleyball"],
+						["everyday", "every satuday", "every sunday", "every monday", "every tuesday", "every thursday", "every friday"],
+						"."
+					],
+					Answers: [
+						"Play", "Plays", "Playing", "Played"
+					]
+				},
+			]
+		},
+		{
+			Count: 9,
+			Questions: [
+				{ // first structure
+					Sentence: ["Past simple of Be", "........."],
+					Answers: [
+						"Was/Were", "Bed", "Being", "Beed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Become", "........."],
+					Answers: [
+						"Became", "Becomed", "Become", "Becomes"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Bleed", "........."],
+					Answers: [
+						"Bled", "Bleeded", "Bleeds", "Bleed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Break", "........."],
+					Answers: [
+						"Broke", "Breaked", "Break", "Breaking"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Bring", "........."],
+					Answers: [
+						"Brought", "Bringed", "Bring", "Brings"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Build", "........."],
+					Answers: [
+						"Built", "Build", "Builded", "Builds"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Buy", "........."],
+					Answers: [
+						"Bought", "Buyed", "Buy", "Buys"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Choose", "........."],
+					Answers: [
+						"Chose", "Choosed", "Choose", "Chooses"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Come", "........."],
+					Answers: [
+						"Came", "Coming", "Comes", "Comed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Cut", "........."],
+					Answers: [
+						"Cut", "Cuted", "Cuts", "Cutted"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Do", "........."],
+					Answers: [
+						"Did", "Do", "Does", "Doed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Draw", "........."],
+					Answers: [
+						"Drew", "Draws", "Drawed", "Drawing"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Drink", "........."],
+					Answers: [
+						"Drank", "Drunk", "Drinks", "Drinked"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Drive", "........."],
+					Answers: [
+						"Drove", "Drived", "Driven", "Droove"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Eat", "........."],
+					Answers: [
+						"Ate", "Eated", "Eatted", "Eaten"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Fall", "........."],
+					Answers: [
+						"Fell", "Feel", "Falled", "Fall"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Feed", "........."],
+					Answers: [
+						"Fed", "Feeded", "Feed", "Fade"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Feel", "........."],
+					Answers: [
+						"Felt", "Fell", "Feeled", "Feel"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Find", "........."],
+					Answers: [
+						"Found", "Find", "Finded", "Finds"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Forget", "........."],
+					Answers: [
+						"Forgot", "Forgeted", "Forgetted", "Forget"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Get", "........."],
+					Answers: [
+						"Got", "Gotten", "Getted", "Get"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Give", "........."],
+					Answers: [
+						"Gave", "Given", "Gived", "Gove"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Go", "........."],
+					Answers: [
+						"Went", "Goed", "Gone", "Goo"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Have", "........."],
+					Answers: [
+						"Had", "Have", "Hove", "Haved"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Hear", "........."],
+					Answers: [
+						"Heard", "Hear", "Heared", "Hair"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Hit", "........."],
+					Answers: [
+						"Hit", "Hitted", "Hited", "Hat"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Hurt", "........."],
+					Answers: [
+						"Hurt", "Hurted", "Hurts", "Hurtted"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Keep", "........."],
+					Answers: [
+						"Kept", "Keeped", "Kep", "Keep"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Know", "........."],
+					Answers: [
+						"Knew", "Known", "Knowed", "Knaw"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Leave", "........."],
+					Answers: [
+						"Left", "Leaved", "Leave", "Lave"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Lose", "........."],
+					Answers: [
+						"Lost", "Losed", "Lose", "Loose"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Make", "........."],
+					Answers: [
+						"Made", "Maked", "Make", "Makes"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Meet", "........."],
+					Answers: [
+						"Met", "Meeted", "Metted", "Meetted"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Pay", "........."],
+					Answers: [
+						"Paid", "Payed", "Pay", "Pays"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Put", "........."],
+					Answers: [
+						"Put", "Puted", "Putted", "Puting"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Read", "........."],
+					Answers: [
+						"Read/Red", "Red", "Read", "Readed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Ride", "........."],
+					Answers: [
+						"Rode", "Road", "Rided", "None"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Run", "........."],
+					Answers: [
+						"Ran", "Run", "Runned", "Runed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Say", "........."],
+					Answers: [
+						"Said", "Sayed", "Sayeed", "Say"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of See", "........."],
+					Answers: [
+						"Saw", "Seen", "Seed", "See"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Set", "........."],
+					Answers: [
+						"Set", "Setted", "Seted", "Seated"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Sell", "........."],
+					Answers: [
+						"Sold", "Selled", "Sell", "Seel"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Send", "........."],
+					Answers: [
+						"Sent", "Sended", "Send", "Sending"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Sing", "........."],
+					Answers: [
+						"Sang", "Sung", "Sing", "Singed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Sit", "........."],
+					Answers: [
+						"Sat", "Sit", "Sitted", "None"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Sleep", "........."],
+					Answers: [
+						"Slept", "Slep", "Sleeped", "Slope"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Speak", "........."],
+					Answers: [
+						"Spoke", "Spoken", "Speaked", "Spike"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Stand", "........."],
+					Answers: [
+						"Stood", "Standed", "Stand", "Steed"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Stick", "........."],
+					Answers: [
+						"Stuck", "Sticked", "Stock", "Stoke"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Swim", "........."],
+					Answers: [
+						"Swam", "Swum", "Swimmed", "None"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Take", "........."],
+					Answers: [
+						"Took", "Taked", "Taken", "Take"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Take off", "........."],
+					Answers: [
+						"Took Off", "Taked Off", "Taken Off", "Take Off"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Teach", "........."],
+					Answers: [
+						"Taught", "Teached", "Teach", "Tach"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Tell", "........."],
+					Answers: [
+						"Told", "Telled", "Tell", "Teel"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Think", "........."],
+					Answers: [
+						"Thought", "Thinked", "Thank", "Think"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Understand", "........."],
+					Answers: [
+						"Understood", "Understeed", "Understand", "Understanded"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Wake", "........."],
+					Answers: [
+						"Woke", "Waken", "Waked", "Work"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Wear", "........."],
+					Answers: [
+						"Wore", "Wire", "Weared", "Wear"
+					]
+				},
+				{ // first structure
+					Sentence: ["Past simple of Write", "........."],
+					Answers: [
+						"Wrote", "Writed", "Writed", "Write"
+					]
+				},				
+			]
+		}
+	];
+	
+	ShowNextQuestion(true, false);
 	//ShowNewQuestion("Zahra ....... to school every monday. (go)", [{Text: "Go"}, {Text: "Goes", Answer: true}, {Text: "Understood"}, {Text: "Went"}]);
 })();
 </script>
