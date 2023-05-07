@@ -1,11 +1,3 @@
-/**
-Theme Name: rozmusicv2
-Theme URI: http://rozmusic.com
-Version : 2
-Author: RozMusic
-Author URI: http://rozmusic.com
-**/
-
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 
 body {
@@ -1998,4 +1990,121 @@ p.description s {
     background-color: rgba(0, 0, 0, 0.15);
     margin-top: 0.5rem;
 	margin-bottom: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) { 
+	.topheader, .response_head, article header, .sidenav .scroll {
+		background-color: #2a2a2e;
+	}
+
+	header nav li a {
+		color: #e7e6e7;
+	}
+
+	header nav li a:hover {
+		color: #000000;
+	}
+
+	main {
+		background-color: #212025;
+	}
+
+	article, .list, .post_content .box_right, .posts .post {
+		background-color: #2a2a2e !important;
+		border: 2px solid #5f6267;
+	}
+
+	.post_content .box_right.post .title a {
+		color: #e3e3e3;
+		transition: color 0.2s linear;
+	}
+
+	.post_content .box_right.post .title a:hover {
+		color: #00dddd;
+	}
+
+	.large_title1, header .logo {
+		background: linear-gradient(to right, rgb(221 203 9) 0%, rgb(225 158 3) 100%);
+		/*linear-gradient(to right, rgba(243,225,23,1) 0%, rgba(255,179,1,1) 100%)*/
+	}
+
+	.list {
+		border-radius: 4px;
+	}
+
+	.list ul li a {
+		color: #e1f7f4;
+	}
+
+	.list ul li a:hover {
+		color: #63e3d1;
+	}
+
+	input {
+		background: transparent;
+		color: #e1f7f4;
+		font-family: 'Tilt Neon';
+		font-size: 0.92rem;
+	}
+
+	.search input {
+		border-right: 1px solid #868c97;
+	}
+
+	.sidenav .head {
+		background: #ebb000;
+	}
+	
+	.sidenav .links ul li a {
+		color: #e1f7f4;
+	}
+	
+	.post_content aside.gray {
+		background: #d6dce9;
+	}
+	
+	img {
+		color: white;
+	}
+	
+	.box_right.bottom .title {
+		color: #c1c1c1;
+	}
+	
+	.box_right.bottom.tags a {
+		background: #005c5c;
+		color: white;
+	}
+	
+	.box_right.bottom.tags a:hover {
+		background: #4fe1c6;
+		color: black;
+	}
+	
+	.posts .post h5 {
+		color: #e1f7f4;
+	}
+	
+	.posts .post h6 {
+		color: white;
+	}
+	
+	p.description { 
+		color: #e7e7e7;
+		background: black;
+		border: 2px solid #5f6267;
+	}
+	
+	p.description span {
+		color: #00c7c7;
+	}
+	
+	#wp_page_numbers ul li a {
+		color: #ffffff;
+	}
+	
+	.lyrics {
+		background-color: #30363e;
+		border: 2px solid #5f6267;
+	}
 }
