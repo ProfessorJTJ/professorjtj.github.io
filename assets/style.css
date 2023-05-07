@@ -2107,4 +2107,12 @@ p.description s {
 		background-color: #30363e;
 		border: 2px solid #5f6267;
 	}
+	
+	li.space {
+		color: white;
+	}
+	
+	p.description s {
+		background-color: #898989;
+	}
 }
