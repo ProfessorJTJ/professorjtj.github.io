@@ -2059,8 +2059,16 @@ p.description s {
 		color: #e1f7f4;
 	}
 	
+	.post_content aside {
+		background:	linear-gradient(to right, rgb(229 216 62) 0%, rgb(235 165 1) 100%);
+	}
+	
 	.post_content aside.gray {
-		background: #d6dce9;
+		background: #212834;
+	}
+	
+	.post_content aside.gray ul li a {
+		color: #e5e5e5;
 	}
 	
 	img {
