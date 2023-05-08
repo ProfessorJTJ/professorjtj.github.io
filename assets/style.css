@@ -2100,7 +2100,7 @@ p.description s {
 	p.description { 
 		color: #e7e7e7;
 		background: black;
-		border: 2px solid #5f6267;
+		/*border: 2px solid #5f6267;*/
 	}
 	
 	p.description span {
