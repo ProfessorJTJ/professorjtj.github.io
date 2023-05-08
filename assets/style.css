@@ -2080,13 +2080,15 @@ p.description s {
 	}
 	
 	.box_right.bottom.tags a {
-		background: #005c5c;
+		/*background: #005c5c;*/
+		background: transparent;
+		border: 2px solid #017878;
 		color: white;
 	}
 	
 	.box_right.bottom.tags a:hover {
-		background: #4fe1c6;
-		color: black;
+		background: #017878;
+		/*color: black;*/
 	}
 	
 	.posts .post h5 {
