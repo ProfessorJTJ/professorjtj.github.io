@@ -983,6 +983,10 @@ footer .copyright span a{
 	display:block;
 	font-size:15px;
 	text-align:center;
+	font-size: 1rem;
+    font-family: 'Tilt Neon';
+    padding-top: 17px;
+    padding-bottom: 17px;
 }
 .dl a:before{
 	content:'';
@@ -993,9 +997,9 @@ footer .copyright span a{
 	width:20px;
 	height:20px;
 }
-.dl a:hover:before {
+/*.dl a:hover:before {
 	animation: fade ease .75s;
-}
+}*/
 @keyframes fade {
 	from {
 		opacity: 0;
