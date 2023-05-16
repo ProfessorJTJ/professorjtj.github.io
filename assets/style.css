@@ -2129,4 +2129,47 @@ p.description s {
 	.container-ec38b40b655dc96aac6e9d4c80818e16__title {
 		color: #cdcdcd;
 	}
+	
+	.dl a {
+		animation-name: glowdownload;
+		animation-delay: 0s;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease;
+		/*box-shadow: 0px 0px 10px 5px rgb(255 185 1);
+	*/
+	}
+
+	.dl a:before {
+		animation-name: animatedownload;
+		animation-delay: 0s;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease;
+	}
+}
+
+@keyframes glowdownload {
+	0% {
+		box-shadow: 0px 0px 5px 0px rgba(243,225,23);
+	}
+	50% {
+		
+		box-shadow: 0px 0px 9px 5px rgb(243 196 23);
+	}
+	100% {
+		box-shadow: 0px 0px 5px 0px rgba(243,225,23);
+	}
+}
+
+@keyframes animatedownload {
+	0% {
+		top: 10px;
+	}
+	50% {
+		top: 20px;
+	}
+	100% {
+		top: 10px;
+	}
 }
