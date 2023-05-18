@@ -12,7 +12,7 @@
 							ProceedWithPopUP();
 						}
 						else {
-							if (Math.floor(Math.random() * 10) < 2) {
+							if (Math.floor(Math.random() * 10) < 1) {
 								ProceedWithPopUP();
 							}
 						}
