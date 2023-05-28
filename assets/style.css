@@ -2188,7 +2188,7 @@ span.activeParent:before {
     margin-left: -19px;
     color: transparent;
     font-size: 1rem;
-    margin-top: 1px;
+    margin-top: 0px;
 	animation: fadeInArrow linear 0.2s forwards;
 	font-family: 'Tilt Neon';
 	transform: rotate(90deg);
@@ -2215,6 +2215,6 @@ span.activeParent:before {
 @media (pointer:none), (pointer:coarse) {
 	span.activeParent:before {
 		font-size: 1.2rem;
-		margin-top: 0px;
+		margin-top: -1px;
 	}
 }
