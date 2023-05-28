@@ -2182,10 +2182,11 @@ span.activeParent:before {
     content: '►';
     position: absolute;
     margin-left: -19px;
+    color: transparent;
     font-size: 0.9rem;
     margin-top: 1px;
-    animation: fadeInArrow linear 0.2s forwards;
-    /* font-family: 'Tilt Neon'; */
+	animation: fadeInArrow linear 0.2s forwards;
+	font-family: 'Tilt Neon';
 }
 
 @keyframes fadeInArrow {
