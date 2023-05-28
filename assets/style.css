@@ -2177,3 +2177,22 @@ p.description s {
 		top: 10px;
 	}
 }
+
+span.activeParent:before {
+    content: '►';
+    position: absolute;
+    margin-left: -19px;
+    font-size: 0.9rem;
+    margin-top: 1px;
+    animation: fadeInArrow linear 0.2s forwards;
+    /* font-family: 'Tilt Neon'; */
+}
+
+@keyframes fadeInArrow {
+	0% {
+		color: transparent;
+	}
+	100% {
+		color: #ff9900;
+	}
+}
