@@ -2183,7 +2183,7 @@ span.activeParent {
 }
 
 span.activeParent:before {
-    content: '►';
+    content: '▲';
     position: absolute;
     margin-left: -19px;
     color: transparent;
@@ -2191,6 +2191,7 @@ span.activeParent:before {
     margin-top: 1px;
 	animation: fadeInArrow linear 0.2s forwards;
 	font-family: 'Tilt Neon';
+	transform: rotate(90deg);
 }
 
 @keyframes fadeInArrow {
