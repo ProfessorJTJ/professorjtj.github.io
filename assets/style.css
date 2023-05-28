@@ -2215,6 +2215,6 @@ span.activeParent:before {
 @media (pointer:none), (pointer:coarse) {
 	span.activeParent:before {
 		font-size: 1.2rem;
-		margin-top: -1px;
+		margin-top: -2px;
 	}
 }
