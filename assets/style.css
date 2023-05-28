@@ -2179,7 +2179,7 @@ p.description s {
 }
 
 span.activeParent {
-	padding-left: 12px;
+	animation: paddingLeftAnim linear 0.2s forwards;
 }
 
 span.activeParent:before {
@@ -2200,5 +2200,20 @@ span.activeParent:before {
 	}
 	100% {
 		color: #ff9900;
+	}
+}
+
+@keyframes paddingLeftAnim {
+	0% {
+		padding-left: 0px;
+	}
+	100% {
+		padding-left: 12px;
+	}
+}
+
+@media (pointer:none), (pointer:coarse) {
+	span.activeParent:before {
+		font-size: 1.2rem;
 	}
 }
