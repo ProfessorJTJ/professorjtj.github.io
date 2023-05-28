@@ -2183,7 +2183,7 @@ span.activeParent:before {
     position: absolute;
     margin-left: -19px;
     color: transparent;
-    font-size: 0.9rem;
+    font-size: 15px;
     margin-top: 1px;
 	animation: fadeInArrow linear 0.2s forwards;
 	font-family: 'Tilt Neon';
