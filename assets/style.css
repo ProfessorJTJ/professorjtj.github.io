@@ -2178,12 +2178,16 @@ p.description s {
 	}
 }
 
+span.activeParent {
+	padding-left: 12px;
+}
+
 span.activeParent:before {
     content: '►';
     position: absolute;
     margin-left: -19px;
     color: transparent;
-    font-size: 15px;
+    font-size: 1rem;
     margin-top: 1px;
 	animation: fadeInArrow linear 0.2s forwards;
 	font-family: 'Tilt Neon';
