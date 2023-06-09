@@ -2244,11 +2244,14 @@ span.activeParent:before {
     text-align: center;
     width: 50%;
     padding: 12px 0px;
-    overflow: auto;
+    overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .musicsubItem:first-child {
     border-right: 1px solid #ffc801;
+	text-align: left;
+	padding-left: 12px;
 }
 
 .musicsubItem a {
@@ -2271,5 +2274,11 @@ span.activeParent:before {
 	}
 	.musicsubItem a {
 		color: black !important;
+	}
+	.musicsubItem a:hover:not(.disabled) {
+		color: #008e25 !important;	
+	}
+	.musicsubItem a.disabled {
+		color: #979797 !important;
 	}
 }
