@@ -2230,6 +2230,11 @@ span.activeParent:before {
     box-shadow: 0px 0px 10px 3px rgb(243 196 23);
 }
 
+.musicItem {
+	white-space: nowrap;
+	height: 43px;
+}
+
 .musicItem:not(:last-child) {
 	border-bottom: 2px solid #ffc801;
 }
@@ -2238,9 +2243,8 @@ span.activeParent:before {
     display: inline-block;
     text-align: center;
     width: 50%;
-    padding: 10px 0px;
+    padding: 12px 0px;
     overflow: auto;
-    height: 39px;
 }
 
 .musicsubItem:first-child {
@@ -2249,6 +2253,11 @@ span.activeParent:before {
 
 .musicsubItem a {
 	color: #ffeb00 !important;
+}
+
+.musicsubItem a.disabled {
+	color: #b5a700 !important;
+	cursor: progress;
 }
 
 @media (prefers-color-scheme: light) {
