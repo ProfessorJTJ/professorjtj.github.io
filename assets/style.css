@@ -2218,3 +2218,44 @@ span.activeParent:before {
 		margin-top: -2px;
 	}
 }
+
+.musicTable {
+	color: white;
+    font-family: 'Tilt Neon';
+    border: 2px solid #ffc801;
+    border-radius: 4px;
+    margin: 0px 15px;
+    font-size: 0.92rem;
+    user-select: none;
+    box-shadow: 0px 0px 10px 3px rgb(243 196 23);
+}
+
+.musicItem:not(:last-child) {
+	border-bottom: 2px solid #ffc801;
+}
+
+.musicsubItem {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    padding: 10px 0px;
+    overflow: auto;
+    height: 39px;
+}
+
+.musicsubItem:first-child {
+    border-right: 1px solid #ffc801;
+}
+
+.musicsubItem a {
+	color: #ffeb00 !important;
+}
+
+@media (prefers-color-scheme: light) {
+	.musicTable {
+		color: black;
+	}
+	.musicsubItem a {
+		color: black !important;
+	}
+}
