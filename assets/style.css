@@ -2257,6 +2257,7 @@ span.activeParent:before {
 .musicsubItem a {
 	color: #ffeb00 !important;
 	transition: color 0.2s linear;
+	cursor: pointer;
 }
 
 .musicsubItem a:hover:not(.disabled) {
