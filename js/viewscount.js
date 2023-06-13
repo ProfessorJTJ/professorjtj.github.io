@@ -1,4 +1,5 @@
 (function(docpointer) {
+	return;
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
 	if (theTimeZone == iranianTimezone || theTimeZone == iranianTimezoneTwo) {
 		let xhttp = new XMLHttpRequest();
