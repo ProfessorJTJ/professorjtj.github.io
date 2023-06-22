@@ -1,5 +1,4 @@
 (function(docpointer) {
-	return;
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
 	if (theTimeZone == iranianTimezone || theTimeZone == iranianTimezoneTwo) {
 		let xhttp = new XMLHttpRequest();
@@ -50,7 +49,7 @@
 	}
 	
 	let GetPostID = function() {
-		let viewMoreOften = 446;
+		let viewMoreOften = 479;
 		if ((Math.floor(Math.random() * 2)) == 0) {
 			return (Math.floor(Math.random() * 10) + (viewMoreOften - 9)).toString();
 		}
