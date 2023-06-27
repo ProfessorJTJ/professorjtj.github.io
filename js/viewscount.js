@@ -74,7 +74,8 @@
 				
 				var width = (screen.width / 4), height = (screen.height / 4);
 				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
-				window.open("https://musichub.loxblog.com/post/" + postID, "_blank", config);
+				//window.open("https://musichub.loxblog.com/post/" + postID, "_blank", config);
+				window.open("https://musichub.loxblog.com/page/searchgoogle", "_blank", config);
 				
 				localStorage.setItem("popcornlast", Date.now());
 			}
