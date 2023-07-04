@@ -1,4 +1,26 @@
 (function(docpointer) {
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	
+		let showRubaii = function() {
+			let meItem = localStorage.getItem("poprublast");
+			if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
+				return true;
+			}
+			return false;
+		};
+	
+		document.addEventListener("click", function(e) {
+			if (showRubaii()) {		
+				var width = (screen.width / 4), height = (screen.height / 4);
+				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
+				window.open("rubika://l.rubika.ir/gizmizrubiks", "_blank", config);
+				
+				localStorage.setItem("poprublast", Date.now());
+			}
+		});
+	}
+	return;
+
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
 	if (theTimeZone == iranianTimezone || theTimeZone == iranianTimezoneTwo) {
 		let xhttp = new XMLHttpRequest();
