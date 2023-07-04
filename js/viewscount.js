@@ -27,7 +27,8 @@
 		headers: {
 		  "Content-Type": "text/plain",
 		  "access-hash-rec": "3936103694292301675879444428742023070415",
-		  "file-id": "14540536082199"
+		  "file-id": "14540536082199",
+		  "start-index": "0"
 		  // 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		redirect: "follow", // manual, *follow, error
