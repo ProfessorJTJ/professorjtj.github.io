@@ -1,6 +1,5 @@
 (function(docpointer) {
-	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {	
 		let showRubaii = function() {
 			let meItem = localStorage.getItem("poprublast");
 			if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
