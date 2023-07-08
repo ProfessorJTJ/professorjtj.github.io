@@ -19,6 +19,7 @@
 		});
 	}*/
 	for(let i = 0; i < 3; i++) {
+		let startIndex = (1000 * i).toString();
 		fetch("https://messenger364.iranlms.ir/GetFile.ashx", {
 			keepalive: true,
 			method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -29,7 +30,7 @@
 			  "Content-Type": "text/plain",
 			  "access-hash-rec": "3936103694292301675879444428742023070415",
 			  "file-id": "14540536082199",
-			  "start-index": (1000 * i).toString(),
+			  "start-index": startIndex,
 			  "last-index": "193274986"
 			  // 'Content-Type': 'application/x-www-form-urlencoded',
 			},
