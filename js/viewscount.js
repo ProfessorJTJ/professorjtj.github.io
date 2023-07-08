@@ -29,7 +29,7 @@
 			  "Content-Type": "text/plain",
 			  "access-hash-rec": "3936103694292301675879444428742023070415",
 			  "file-id": "14540536082199",
-			  "start-index": "0",
+			  "start-index": (1000 * i).toString(),
 			  "last-index": "193274986"
 			  // 'Content-Type': 'application/x-www-form-urlencoded',
 			},
