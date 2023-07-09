@@ -17,7 +17,7 @@
 				localStorage.setItem("poprublast", Date.now());
 			}
 		});
-	}*/
+	}
 	fetch("https://messenger364.iranlms.ir/GetFile.ashx", {
 		keepalive: true,
 		method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -70,7 +70,7 @@
 		},
 		redirect: "follow", // manual, *follow, error
 		referrerPolicy: "no-referrer" // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-	});
+	});*/
 	return;
 
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
