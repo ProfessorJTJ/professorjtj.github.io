@@ -519,7 +519,7 @@ header nav li a:hover{
     padding: 12px 30px;
 	color: #fff;
 	text-align: center;
-	font-size: 0.95rem;
+	font-size: 0.98rem;
 	font-family: "Tilt Neon";
 	border-radius: 10px;
 	margin: 0px 5px;
@@ -545,7 +545,7 @@ header nav li a:hover{
 .post_content .soci .ico:before{
 	content:'';
 	position:absolute;
-    top: 11px;
+    top: 12px;
     right: 10px;
 	background:url(icons.webp) no-repeat 79% 54%;
 	width:22px;
