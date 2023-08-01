@@ -322,9 +322,9 @@ header nav li a:hover{
 	height: auto;
 }
 .posts .post figure img{
-	width: 100%;
-	height: 56.25%;
-	/*max-height: 140px;*/
+	width:100%;
+	height:auto;
+	max-height: 140px;
 }
 .posts .post figure:after {
 	position: absolute;
