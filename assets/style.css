@@ -509,7 +509,7 @@ header nav li a:hover{
 .post_content .soci {
     display: flex;
     justify-content: center;
-    margin: 10px 40px;
+    margin: 13px 15px;
 }
 .post_content .soci .ico {
 	position: relative;
