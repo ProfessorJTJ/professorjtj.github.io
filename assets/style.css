@@ -519,19 +519,28 @@ header nav li a:hover{
     padding: 12px 30px;
 	color: #fff;
 	text-align: center;
-	font-size: 13px;
+	font-size: 0.95rem;
+	font-family: "Tilt Neon";
 	border-radius: 10px;
 	margin: 0px 5px;
 
 }
 .post_content .soci .ico:hover {
 	opacity:0.8;
+	color: white;
 }
 .post_content .soci .ico.insta {
 	background: radial-gradient(circle at 39% 135%,#f5b445 0%,#ef5d2e 35%,#d3135b 65%,#9611a5 95%);
+	width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .post_content .soci .ico.tel {
-	background: linear-gradient(180deg,rgba(0,134,255,1) 0%,rgba(71,202,255,1) 100%);
+	/*background: linear-gradient(180deg,rgba(0,134,255,1) 0%,rgba(71,202,255,1) 100%);*/
+	background: linear-gradient(180deg,rgb(158 95 241) 0%,rgb(34 140 191) 100%);
+	width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .post_content .soci .ico:before{
 	content:'';
