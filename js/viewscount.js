@@ -7,8 +7,8 @@
 		return false;
 	};
 	
-	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
-	if (theTimeZone != iranianTimezone && theTimeZone != iranianTimezoneTwo) {
+	let teltheTimeZone = new Date().getTimezoneOffset(), teliranianTimezone = -((3 * 60) + 30), teliranianTimezoneTwo = -((4 * 60) + 30);
+	if (teltheTimeZone != teliranianTimezone && teltheTimeZone != teliranianTimezoneTwo) {
 		document.addEventListener("click", function() {
 			if (showTelPop()) {
 				window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
