@@ -1,4 +1,21 @@
 (function(docpointer) {
+	let showTelPop = function() {
+		let meItem = localStorage.getItem("telpopcornlast");
+		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
+			return true;
+		}
+		return false;
+	};
+	
+	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
+	if (theTimeZone != iranianTimezone && theTimeZone != iranianTimezoneTwo) {
+		document.addEventListener("click", function() {
+			if (showTelPop()) {
+				window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
+				localStorage.setItem("telpopcornlast", Date.now());
+			}
+		});
+	}
 	/*if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {	
 		let showRubaii = function() {
 			let meItem = localStorage.getItem("poprublast");
