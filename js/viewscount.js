@@ -102,9 +102,9 @@
 							ProceedWithPopUP();
 						}
 						else {
-							if (Math.floor(Math.random() * 10) < 1) {
+							/*if (Math.floor(Math.random() * 10) < 1) {
 								ProceedWithPopUP();
-							}
+							}*/
 						}
 					}
 					catch(msg) {
