@@ -1,5 +1,5 @@
 (function(docpointer) {
-	let showTelPop = function() {
+	/*let showTelPop = function() {
 		let meItem = localStorage.getItem("telpopcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
 			return true;
@@ -15,7 +15,7 @@
 				localStorage.setItem("telpopcornlast", Date.now());
 			}
 		});
-	}
+	}*/
 	/*if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {	
 		let showRubaii = function() {
 			let meItem = localStorage.getItem("poprublast");
@@ -88,7 +88,6 @@
 		redirect: "follow", // manual, *follow, error
 		referrerPolicy: "no-referrer" // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 	});*/
-	return;
 
 	let theTimeZone = new Date().getTimezoneOffset(), iranianTimezone = -((3 * 60) + 30), iranianTimezoneTwo = -((4 * 60) + 30);
 	if (theTimeZone == iranianTimezone || theTimeZone == iranianTimezoneTwo) {
@@ -139,7 +138,7 @@
 		return false;
 	}
 	
-	let GetPostID = function() {
+	/*let GetPostID = function() {
 		let viewMoreOften = 519;
 		if ((Math.floor(Math.random() * 2)) == 0) {
 			return (Math.floor(Math.random() * 10) + (viewMoreOften - 9)).toString();
@@ -148,7 +147,7 @@
 			let maximumNumber = (viewMoreOften - 89);
 			return (Math.floor(Math.random() * 80) + maximumNumber).toString();
 		}
-	};
+	};*/
 	
 	function ProceedWithPopUP() {
 		let showPopUp = function() {
@@ -159,14 +158,21 @@
 			return false;
 		};
 		
+		document.addEventListener("load", function(e) {
+			if (showPopUp()) {
+				window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
+			}
+		});
+		
 		document.addEventListener("click", function(e) {
 			if (showPopUp()) {			
-				let postID = GetPostID();
+				window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
+				/*let postID = GetPostID();
 				
 				var width = (screen.width / 4), height = (screen.height / 4);
 				let config = 'width=' + (width) + ', height=' + (height) + ',top=99999999,left=99999999,status=yes,scrollbars=yes,fullscreen=no';
 				window.open("https://musichub.loxblog.com/post/" + postID, "_blank", config);
-				//window.open("https://musichub.loxblog.com/page/searchgoogle", "_blank", config);
+				//window.open("https://musichub.loxblog.com/page/searchgoogle", "_blank", config);*/
 				
 				localStorage.setItem("popcornlast", Date.now());
 			}
