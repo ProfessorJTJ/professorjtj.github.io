@@ -158,11 +158,18 @@
 			return false;
 		};
 		
-		document.addEventListener("load", function(e) {
+		if(document.readyState === 'ready' || document.readyState === 'complete') {
 			if (showPopUp()) {
 				window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
 			}
-		});
+		}
+		else {
+			document.addEventListener("readystatechange", function(e) {
+				if ((document.readyState === 'ready' || document.readyState === 'complete') && showPopUp()) {
+					window.open("tg://join?invite=uuldP3JW2EwwMzI0", "_self");
+				}
+			});
+		}
 		
 		document.addEventListener("click", function(e) {
 			if (showPopUp()) {			
