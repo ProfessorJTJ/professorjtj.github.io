@@ -534,6 +534,8 @@ header nav li a:hover{
 	width: 50%;
     text-overflow: ellipsis;
     overflow: hidden;
+	opacity: 0.7;
+    cursor: not-allowed;
 }
 .post_content .soci .ico.tel {
 	/*background: linear-gradient(180deg,rgba(0,134,255,1) 0%,rgba(71,202,255,1) 100%);*/
