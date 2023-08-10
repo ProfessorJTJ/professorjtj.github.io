@@ -2307,6 +2307,8 @@ span.activeParent:before {
 
 .tranblock {
     text-align: center;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .lang {
