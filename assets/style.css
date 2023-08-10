@@ -2303,6 +2303,7 @@ span.activeParent:before {
 	Languge Section:
 	South Korea: https://s8.uupload.ir/files/sk_ejsy.jpg
 	US: https://s8.uupload.ir/files/us_1q9y.jpg
+	Spain: https://s8.uupload.ir/files/spain_44j0.png
 */
 
 .tranblock {
@@ -2315,7 +2316,7 @@ span.activeParent:before {
     display: inline-block;
     margin-right: 7px;
     cursor: pointer;
-	opacity: 0.8;
+	opacity: 0.7;
     transition: opacity 0.2s linear;
 }
 
