@@ -1930,6 +1930,10 @@ button:focus {
 	user-select: none; /* Standard syntax */
 }
 
+.translatedlyrics {
+	display: none;
+}
+
 .lyrics br {
 	content: "";
 	display: block;
