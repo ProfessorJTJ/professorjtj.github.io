@@ -2313,6 +2313,7 @@ span.activeParent:before {
     display: inline-block;
     margin-right: 7px;
     cursor: pointer;
+	opacity: 0.8;
     transition: opacity 0.2s linear;
 }
 
@@ -2321,5 +2322,5 @@ span.activeParent:before {
 }
 
 .lang:hover, .lang.selected {
-    opacity: 0.8;
+    opacity: 1;
 }
