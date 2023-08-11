@@ -2197,17 +2197,32 @@ span.activeParent {
 	animation: paddingLeftAnim linear 0.2s forwards;
 }
 
-span.activeParent:before {
-    content: '▲';
-    position: absolute;
-    margin-left: -19px;
-    color: transparent;
-    font-size: 1rem;
-    margin-top: 0px;
+
+.lyrics:not(.arabic) span.activeParent:before {
+	content: '▲';
+	position: absolute;
+	margin-left: -19px;
+	color: transparent;
+	font-size: 1rem;
+	margin-top: 0px;
 	animation: fadeInArrow linear 0.2s forwards;
 	font-family: 'Tilt Neon';
 	transform: rotate(90deg);
 }
+
+.lyrics.arabic span.activeParent:after {
+	content: '▲';
+	position: absolute;
+	margin-left: 2px;
+	margin-right: -19px;
+	color: transparent;
+	font-size: 1rem;
+	margin-top: 0px;
+	animation: fadeInArrow linear 0.2s forwards;
+	font-family: 'Tilt Neon';
+	transform: rotate(270deg);
+}
+
 
 @keyframes fadeInArrow {
 	0% {
