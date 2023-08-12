@@ -1928,6 +1928,7 @@ button:focus {
 	-webkit-user-select: none; /* Safari */
 	-ms-user-select: none; /* IE 10 and IE 11 */
 	user-select: none; /* Standard syntax */
+	transition: color 0.2s linear;
 }
 
 .translatedlyrics {
@@ -1954,7 +1955,7 @@ button:focus {
 	cursor: pointer;
 }
 
-.lyrics span.cited {
+.lyrics:not(.fadeoutlyric) span.cited {
 	animation-name: citedlyric;
 	animation-duration: 2s;
 	animation-timing-function: ease;
@@ -2193,8 +2194,12 @@ p.description s {
 	}
 }
 
-span.activeParent {
+.lyrics:not(.arabic) span.activeParent {
 	animation: paddingLeftAnim linear 0.2s forwards;
+}
+
+.lyrics.arabic span.activeParent {
+	animation: paddingRightAnim linear 0.2s forwards;
 }
 
 
@@ -2239,6 +2244,15 @@ span.activeParent {
 	}
 	100% {
 		padding-left: 12px;
+	}
+}
+
+@keyframes paddingRightAnim {
+	0% {
+		padding-right: 0px;
+	}
+	100% {
+		padding-right: 12px;
 	}
 }
 
@@ -2341,4 +2355,8 @@ span.activeParent {
 
 .lang:hover, .lang.selected {
     opacity: 1;
+}
+
+.lyrics.fadeoutlyric {
+	color: rgba(242, 242, 242, 0);
 }
