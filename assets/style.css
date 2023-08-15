@@ -2194,6 +2194,10 @@ p.description s {
 	}
 }
 
+.lyrics.arabic {
+	direction: rtl;
+}
+
 .lyrics:not(.arabic) span.activeParent {
 	animation: paddingLeftAnim linear 0.2s forwards;
 }
@@ -2201,7 +2205,6 @@ p.description s {
 .lyrics.arabic span.activeParent {
 	animation: paddingRightAnim linear 0.2s forwards;
 }
-
 
 .lyrics:not(.arabic) span.activeParent:before {
 	content: '▲';
@@ -2215,7 +2218,7 @@ p.description s {
 	transform: rotate(90deg);
 }
 
-.lyrics.arabic span.activeParent:after {
+.lyrics.arabic span.activeParent:before {
 	content: '▲';
 	position: absolute;
 	margin-left: 2px;
@@ -2333,6 +2336,8 @@ p.description s {
 	South Korea: https://s8.uupload.ir/files/sk_ejsy.jpg
 	US: https://s8.uupload.ir/files/us_1q9y.jpg
 	Spain: https://s8.uupload.ir/files/spain_44j0.png
+	Japan: https://s8.uupload.ir/files/japan_4o5t.jpg
+	Russia: https://s8.uupload.ir/files/ru_wqh.png
 */
 
 .tranblock {
