@@ -1,4 +1,5 @@
 (function(docpointer) {
+	return false;
 	/*let showTelPop = function() {
 		let meItem = localStorage.getItem("telpopcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
