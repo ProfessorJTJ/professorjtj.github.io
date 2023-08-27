@@ -2365,3 +2365,18 @@ p.description s {
 .lyrics.fadeoutlyric {
 	color: rgba(242, 242, 242, 0);
 }
+
+.chiperbill {
+	display: none;
+	background: transparent;
+	border: none;
+	position: fixed;
+	z-index: 1000000;
+	/*top: 10px;
+	left: 10px;*/
+	opacity: 0;
+	height: 50.0vh;
+	width: calc(100.0vw - 40px);
+	/*78% is only content, the rest is empty space*/
+	transition: opacity 0.3s linear;
+}
