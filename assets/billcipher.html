@@ -1,0 +1,346 @@
+<html>
+	<head></head>
+	<body>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+			
+			html, body {
+			  background: transparent;
+			  width: 100vw;
+			  height: 100vh;
+			  margin: 0;
+			  padding: 0;
+			  overflow: hidden;
+			  display: flex;
+			  align-items: center;
+			  justify-content: left;
+			  font-family: "Tilt Neon";
+			  -webkit-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+			  animation-name: floatingAnim;
+			  animation-duration: 1.5s;
+			  animation-iteration-count: infinite;
+			  animation-timing-function: ease-in-out;
+			}
+
+			.canvas {
+			  width: 1px;
+			  height: 1px;
+			  position: relative;
+			  filter: drop-shadow(0 0 1vmin #ffc);
+			  margin-left: 32vmin;		  
+			  cursor: pointer;
+			}
+
+			@keyframes floatingAnim {
+				0%   {margin-top: 0px;}
+				50%  {margin-top: 3vmin;}
+				0%   {margin-top: 0px;}
+			}
+
+			.body {
+			  position: absolute;
+			  left: 50%;
+			  top: 50%;
+			  transform: translate(-50%, -50%);
+			  width: 40vmin;
+			  height: 40vmin;
+			  background: #ff5;
+			  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+			  background-image:
+				/* the horizontal lines */
+				repeating-linear-gradient(to top, transparent 0 30%, #dd2 0 33%),
+				/* the vertical lines from bottom to top */
+				repeating-linear-gradient(to right, transparent 0 40%, #dd2 0 41%),
+				linear-gradient(to right, transparent 0 32%, #dd2 0 33%, transparent 0 70%, #dd2 0 71%, transparent 0),
+				repeating-linear-gradient(to right, transparent 0 24.5%, #dd2 0 25.5%);
+			  background-position:
+				bottom center,
+				bottom center,
+				0% 91%,
+				0% 81%; /* this should be 0% 82%, but then it looks weird :S */
+			  background-size:
+				100% 27%,
+				100% 9%,
+				100% 9%,
+				100% 9%;
+			  background-repeat: 
+				repeat-x; /* only one value, applies to all */
+			}
+
+			.bowtie {
+			  position: absolute;
+			  bottom: 18%;
+			  left: 50%;
+			  transform: translate(-50%, 50%);
+			  width: 22%;
+			  height: 12%;
+			  background: black;
+			  clip-path: polygon(0% 0%, 50% 42%, 100% 0%, 100% 100%, 50% 58%, 0% 100%);
+			}
+
+			.eye {
+			  width: 25%;
+			  height: 25%;
+			  background: white;
+			  border: 0.375vmin solid black;
+			  border-radius: 2% 80% 2% 100%;
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  transform: translate(-50%, -50%) rotate(-45deg);
+			  overflow: hidden; 
+			}
+
+			.eye::before {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  width: 14%;
+			  height: 50%;
+			  background: black;
+			  top: 50%;
+			  left: 82%;
+			  transform: translate(-50%, -50%) rotate(45deg);
+			  border-radius: 100%;
+			  transition: top 0.2s linear, left 0.2s linear, color 0.2s linear;
+			}
+			
+			.eye.angry::before {
+			    background: red;
+			    top: 47%;
+				left: 55%;
+				border: 3px solid #6c0202;
+			}
+
+			.eyelashes {
+			  abackground: #f007;
+			  position: absolute;
+			  width: 35%;
+			  height: 30%;
+			  border-radius: 50%;
+			  top: 49.25%;
+			  left: 50%;
+			  transform: translate(-50%, -50%);
+			  background-image:
+				conic-gradient(
+				  transparent 3%, black 0 4%, 
+				  transparent 0 9%, black 0 10%,
+				  transparent 0 40%, black 0 41%,
+				  transparent 0 46%, black 0 47%,
+				  transparent 0 53%, black 0 54%, 
+				  transparent 0 59%, black 0 60%,
+				  transparent 0 90%, black 0 91%,
+				  transparent 0 96%, black 0 97%,
+				  transparent 0
+			   );
+			  background-image:
+				linear-gradient(57deg, transparent 29%, black 0 31%, transparent 0),
+				linear-gradient(57deg, transparent 71%, black 0 73%, transparent 0),
+				linear-gradient(72deg, transparent 43%, black 0 45%, transparent 0),
+				linear-gradient(72deg, transparent 56%, black 0 58%, transparent 0),
+				linear-gradient(106deg, transparent 56%, black 0 58%, transparent 0),
+				linear-gradient(106deg, transparent 43%, black 0 45%, transparent 0),
+				linear-gradient(120deg, transparent 71%, black 0 73%, transparent 0),
+				linear-gradient(120deg, transparent 29%, black 0 31%, transparent 0);
+			  background-size:
+				100% 50%;
+			  background-position:
+				top center,
+				bottom center;
+			  background-repeat: no-repeat;
+			}
+
+			.hat {
+			  width: 4vmin;
+			  height: 18vmin;
+			  background: black;
+			  position: absolute;
+			  top: -19.5vmin;
+			  left: 0.5vmin;
+			  transform: translate(-50%, -100%) rotate(3deg);
+			  transition: top 0.2s linear, left 0.2s linear, transform 0.2s linear;
+			}
+
+			.hat::before {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  width: 260%;
+			  height: 1.5vmin;
+			  background: black;
+			  bottom: 0;
+			  left: -80%;
+			  transition: top 0.3s linear, left 0.3s linear;
+			}
+
+			.hat.drop {
+				top: 28.5vmin;
+				left: 9vmin;
+				transform: translate(-50%, -100%) rotate(40deg);
+			}
+			
+			
+			.leg {
+			  width: 6vmin;
+			  height: 15vmin;
+			  border: 3vmin solid transparent;
+			  border-left: 2vmin solid black;
+			  border-bottom: 2vmin solid black;
+			  border-radius: 50% 10% 50% 50%;
+			  transform: skewY(-30deg);
+			  position: absolute;
+			  top: 13vmin;
+			  left: -9vmin;
+			}
+
+			.leg::before {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  width: 2.5vmin;
+			  height: 8vmin;
+			  background: black;
+			  transform: skewY(30deg);
+			  border-radius: 50%;
+			  top: 90%;
+			  right: -0.85vmin;
+			}
+
+			.leg + .leg {
+			  top: 13vmin;
+			  transform: scaleX(-1) rotate(10deg) skewY(-30deg);
+			  left: -1vmin;
+			}
+
+			.arm-1 {
+			  position: absolute;
+			  right: 18.5vmin;
+			  top: 3vmin;
+			  width: 3vmin;
+			  height: 12vmin;
+			  border: 1.75vmin solid black;
+			  border-top: 2.25vmin solid black;
+			  border-radius: 100% / 70% 70% 120% 120%;
+			  transform: rotate(-90deg);
+			}
+
+			.arm-1::after {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  top: 70%;
+			  right: 70%;
+			  width: 6vmin;
+			  height: 4vmin;
+			  background: black;
+			  border-radius: 50%;
+			  transform: rotate(55deg); 
+			}
+
+			.arm-2 {
+			  width: 17vmin;
+			  height: 16vmin;
+			  border: 1.75vmin solid transparent;
+			  border-right-color: black;
+			  border-bottom-color: black;
+			  border-radius: 50%;
+			  position: absolute;
+			  top: -6.5vmin;
+			  left: 10vmin;
+			}
+
+			.arm-2::before {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  width: 6vmin;
+			  height: 5vmin;
+			  background: black;
+			  border-radius: 50%;
+			  left: 86%;
+			  top: -5%;
+			}
+
+			.arm-2::after {
+			  content: "";
+			  display: block;
+			  position: absolute;
+			  top: -20%;
+			  left: 63%;
+			  width: 4vmin;
+			  height: 6vmin;
+			  border-radius: 50% 40% 40% 40%;
+			  box-shadow: 2vmin 0 0 -0.5vmin;
+			  transform: rotate(-13deg);
+			}
+			
+			.arm-3 {
+				filter: drop-shadow(0 0 1vmin red);
+				width: 22vmin;
+				height: 21vmin;
+				border-radius: 50%;
+				position: absolute;
+				top: -46vmin;
+				left: 22vmin;
+				background: white;
+				color: black;
+				font-size: min(1rem, 3vmin);
+				font-weight: bold;
+				padding: 4vmin 8vmin 8vmin 8vmin;
+				text-align: center;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: normal;
+			}
+			
+			.armText {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+		</style>
+		<div class="canvas">
+			<div class="arm-1"></div>
+			<div class="arm-2"></div>
+			<div class="arm-3"><div class="armText">Downloading pirated content is illegal and ethically <span style="color: red; font-size: min(1.1rem, 3.1vmin)">immoral!</span></div></div>
+			<div class="leg"></div>
+			<div class="leg"></div>
+			<div class="body">
+				<div class="bowtie"></div>
+				<div class="eyelashes"></div>
+				<div class="eye"></div>
+			</div>
+			<div class="hat"></div>
+		</div>
+		<script>
+			let hatDom = document.querySelector(".hat");
+			hatDom.onclick = function() {
+				hatDom.className = "hat drop";
+			};
+			
+			document.querySelector(".canvas").onclick = function() {
+				let eyeElement = document.querySelector(".eye");
+				if (eyeElement != null) {
+					eyeElement.className = "eye angry";
+					setTimeout(function() {
+						parent.postMessage('StopBilliCipher', '*');
+					}, 350);
+				}
+				else {
+					parent.postMessage('StopBilliCipher', '*');
+				}
+			};
+			
+			/*if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+				document.addEventListener("mousemove", function(e) {
+					parent.postMessage("SetBillCipherPlace," + e.screenX + "," + e.screenY, "*");
+				});
+			}*/
+			parent.postMessage('iframeIsDone', '*');
+		</script>
+	</body>
+</html> <!--
