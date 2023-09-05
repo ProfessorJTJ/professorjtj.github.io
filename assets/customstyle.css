@@ -9,7 +9,7 @@ p.description {
     font-size: 0.92rem;
     background-color: #e6e6e6;
     text-align: left;
-    padding: 2px 10px;
+    padding: 10px 15px;
     border-radius: 3px;
 	
 	word-wrap: break-word;
@@ -170,9 +170,6 @@ p.description s {
 	color: #f2f2f2;
 	font-size: 1rem;
 	font-family: 'Tilt Neon';
-	-webkit-user-select: none; /* Safari */
-	-ms-user-select: none; /* IE 10 and IE 11 */
-	user-select: none; /* Standard syntax */
 	transition: color 0.2s linear;
 }
 
