@@ -67,6 +67,11 @@ p.description s {
 	animation-iteration-count: infinite;
 	animation-timing-function: ease;
 }
+
+.post-body .dl a:hover {
+	text-decoration: none !important;
+}
+
 .dl a:before{
 	content:'';
 	position:absolute;
