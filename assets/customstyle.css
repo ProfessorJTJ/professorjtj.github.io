@@ -180,6 +180,10 @@ p.description s {
 	transition: color 0.2s linear;
 }
 
+.translatedlyrics {
+	display: none;
+}
+
 .lyrics br {
 	content: "";
 	display: block;
@@ -233,6 +237,41 @@ p.description s {
 	font-family: 'Tilt Neon';
 	transform: rotate(270deg);
 }
+
+/*
+	Languge Section:
+	South Korea: https://s8.uupload.ir/files/sk_ejsy.jpg
+	US: https://s8.uupload.ir/files/us_1q9y.jpg
+	Spain: https://s8.uupload.ir/files/spain_44j0.png
+	Japan: https://s8.uupload.ir/files/japan_4o5t.jpg
+	Russia: https://s8.uupload.ir/files/ru_wqh.png
+*/
+
+.tranblock {
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.lang {
+    display: inline-block;
+    margin-right: 7px;
+    cursor: pointer;
+	opacity: 0.7;
+    transition: opacity 0.2s linear;
+}
+
+.lang img {
+    height: 32px !important;
+}
+
+.lang:hover, .lang.selected {
+    opacity: 1;
+}
+
+/*
+	Translation Section END
+*/
 
 .lyrics.fadeoutlyric {
 	color: rgba(242, 242, 242, 0);
