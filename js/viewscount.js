@@ -1,5 +1,5 @@
 (function(docpointer) {
-	let eatApple = "nafdrok=niamod?evloser//:te".split("").reverse().join("");
+	let eatApple = "ri_arastamalas=niamod?evloser//:te".split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
