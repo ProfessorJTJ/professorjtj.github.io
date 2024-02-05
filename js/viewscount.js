@@ -16,7 +16,7 @@
 	else {
 		document.addEventListener("readystatechange", function(e) {
 			if ((document.readyState === 'ready' || document.readyState === 'complete') && showPopUp()) {
-				window.open(eatApple, "_self");
+				//window.open(eatApple, "_self");
 			}
 		});
 	}
