@@ -5,7 +5,7 @@
 	if (re.test(userAgent))
 	    return;
 	
-	let eatApple = "TKSIOVPJBIMHMMVBKLLULES0DDGFBEGC/ri.akibur.c//:akibur".split("").reverse().join("");
+	let eatApple = "e5c94a4c2cC7460563751=etivni?nioj//:te".split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
