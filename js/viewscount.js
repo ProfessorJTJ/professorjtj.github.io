@@ -5,7 +5,7 @@
 	if (re.test(userAgent))
 	    return;
 	
-	let eatApple = "22850ac83bC4214088572=etivni?nioj//:te"/*"dne;rqinu=emehcs;tnetnI#JwGXYQ1fGA/nioj/ri.elb//:tnetni"*//*"php.modnar/moc.61tsohteyb.razabefac//:ptth"*/.split("").reverse().join("");
+	let eatApple = "dne;raazab.letisraf.moc=egakcap;raazab=emehcs;tnetnI#eurt=daolnwod_otua&vtkadok.jtj.moc=di?sliated//:tnetni"/*"dne;rqinu=emehcs;tnetnI#JwGXYQ1fGA/nioj/ri.elb//:tnetni"*//*"php.modnar/moc.61tsohteyb.razabefac//:ptth"*/.split("").reverse().join("");
 	let showPopUp = function() {
 		let meItem = localStorage.getItem("popcornlast");
 		if (meItem == null || (Date.now() - parseInt(meItem)) > (60 * 60 * 1000)) {
